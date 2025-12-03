@@ -116,3 +116,4 @@ class adb_keywords:
         # Otherwise use default connected device
         else:
             os.system(f"adb shell input tap {x} {y}")
+nhjhklk
