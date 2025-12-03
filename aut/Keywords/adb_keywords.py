@@ -2,6 +2,10 @@ import configparser          # Used to read configuration.ini file
 import os                    # Used for file paths and running ADB commands
 import xml.etree.ElementTree as ET   # Used to parse Android UI XML
 from robot.api.deco import keyword   # Allows Robot Framework to call Python functions as keywords
+import cv2
+import numpy as np
+from robot.api import logger
+
 
 
 class adb_keywords:
@@ -116,4 +120,108 @@ class adb_keywords:
         # Otherwise use default connected device
         else:
             os.system(f"adb shell input tap {x} {y}")
-nhjhklk
+
+    def take_android_screenshot(self, filename="screen.png"):
+        """
+        Takes a screenshot from connected Android device using ADB.
+        Returns the local path of the image saved.
+        """
+        import os
+        import subprocess
+
+        local_path = os.path.join(os.getcwd(), filename)
+
+        # Capture screenshot on device
+        subprocess.run(["adb", "shell", "screencap", "-p", f"/sdcard/{filename}"])
+
+        # Pull screenshot to PC
+        subprocess.run(["adb", "pull", f"/sdcard/{filename}", local_path])
+
+        return local_path
+
+
+    # def verify_image(self, reference_image, threshold=0.90):
+    #         """
+    #         ONE API that verifies:
+    #         - FULL image match (if reference size == screen size)
+    #         - PARTIAL image match (if reference smaller than screen)
+
+    #         Automatically detects full vs partial.
+    #         """
+
+    #         # Take fresh screenshot
+    #         captured_path = self.take_android_screenshot("verify_image_screen.png")
+
+    #         screen = cv2.imread(captured_path)
+    #         ref = cv2.imread(reference_image)
+
+    #         if screen is None:
+    #             raise Exception("Failed to load captured screen.")
+    #         if ref is None:
+    #             raise Exception(f"Reference image not found: {reference_image}")
+
+    #         screen_h, screen_w = screen.shape[:2]
+    #         ref_h, ref_w = ref.shape[:2]
+
+    #         # --- FULL SCREEN MATCH (same size) ---
+    #         if screen_h == ref_h and screen_w == ref_w:
+    #             result = cv2.matchTemplate(screen, ref, cv2.TM_CCOEFF_NORMED)
+    #             similarity = float(np.max(result))
+
+    #             if similarity >= threshold:
+    #                 return True
+    #             else:
+    #                 raise AssertionError(
+    #                     f"Full screen mismatch: similarity={similarity:.3f} < {threshold}"
+    #                 )
+
+    #         # --- PARTIAL IMAGE MATCH (small reference) ---
+    #         else:
+    #             result = cv2.matchTemplate(screen, ref, cv2.TM_CCOEFF_NORMED)
+    #             similarity = float(np.max(result))
+
+    #             if similarity >= threshold:
+    #                 return True
+    #             else:
+    #                 raise AssertionError(
+    #                     f"Partial image not found: similarity={similarity:.3f} < {threshold}"
+    #                 )
+
+
+    def verify_image(self, reference_image, threshold=0.90):
+        """
+        Verifies full or partial image match AND logs both images in Robot report.
+        """
+
+        # Take fresh screenshot
+        captured_path = self.take_android_screenshot("verify_image_screen.png")
+
+        # Log captured image in Robot log
+        logger.info(f"<b>Captured Screen:</b><br><img src='{captured_path}' width='300px'>", html=True)
+        logger.info(f"<b>Reference Image:</b><br><img src='{reference_image}' width='300px'>", html=True)
+
+        screen = cv2.imread(captured_path)
+        ref = cv2.imread(reference_image)
+
+        if screen is None:
+            raise Exception("Failed to load captured screen.")
+        if ref is None:
+            raise Exception(f"Reference image not found: {reference_image}")
+
+        screen_h, screen_w = screen.shape[:2]
+        ref_h, ref_w = ref.shape[:2]
+
+        # --- FULL MATCH ---
+        result = cv2.matchTemplate(screen, ref, cv2.TM_CCOEFF_NORMED)
+        similarity = float(np.max(result))
+
+        logger.info(f"<b>Similarity Score:</b> {similarity:.3f}", html=True)
+
+        if similarity >= threshold:
+            logger.info("<b>Image Verification: PASS</b>", html=True)
+            return True
+        else:
+            logger.info("<b>Image Verification: FAIL</b>", html=True)
+            raise AssertionError(
+                f"Image mismatch: similarity={similarity:.3f} < {threshold}"
+            )

@@ -31,3 +31,8 @@ Click Element On Phone DUT
     # - Calculates tap coordinates
     # - Performs adb tap X Y
     click_element_by_text    Play Store    ${DUT.Phone}
+    Sleep    2s
+
+verify captured image
+    verify_image    C:/Users/nadik/Robot_Framework_dev/aut/Resources/images/Playstore_home.png
+
