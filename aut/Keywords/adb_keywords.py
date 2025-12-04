@@ -5,7 +5,9 @@ from robot.api.deco import keyword   # Allows Robot Framework to call Python fun
 import cv2
 import numpy as np
 from robot.api import logger
-
+from PIL import Image, ImageDraw, ImageFont
+import pytesseract
+import re
 
 
 class adb_keywords:
@@ -27,6 +29,10 @@ class adb_keywords:
 
         # Read the INI file into memory
         self.config.read(ini_path)
+        #Set tesseract path
+        pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+        
+       
 
     @keyword
     def get_device_id(self, dut_name):
@@ -138,58 +144,54 @@ class adb_keywords:
         subprocess.run(["adb", "pull", f"/sdcard/{filename}", local_path])
 
         return local_path
+    
 
 
-    # def verify_image(self, reference_image, threshold=0.90):
-    #         """
-    #         ONE API that verifies:
-    #         - FULL image match (if reference size == screen size)
-    #         - PARTIAL image match (if reference smaller than screen)
+   
+    def verify_text_on_screen(self, expected_text, screenshot_name="verify_text.png"):
+        screenshot_path = self.take_android_screenshot(screenshot_name)
 
-    #         Automatically detects full vs partial.
-    #         """
+        image = Image.open(screenshot_path)
+        gray = image.convert("L")
+        gray = gray.point(lambda x: 0 if x < 150 else 255)
 
-    #         # Take fresh screenshot
-    #         captured_path = self.take_android_screenshot("verify_image_screen.png")
+        data = pytesseract.image_to_data(gray, output_type=pytesseract.Output.DICT)
+        draw = ImageDraw.Draw(image)
 
-    #         screen = cv2.imread(captured_path)
-    #         ref = cv2.imread(reference_image)
+        expected_words = expected_text.lower().split()   # Split into words
+        matched = False
 
-    #         if screen is None:
-    #             raise Exception("Failed to load captured screen.")
-    #         if ref is None:
-    #             raise Exception(f"Reference image not found: {reference_image}")
+        for i in range(len(data["text"])):
+            word = data["text"][i].strip().lower()
 
-    #         screen_h, screen_w = screen.shape[:2]
-    #         ref_h, ref_w = ref.shape[:2]
+            # Check each expected word instead of full sentence
+            for ew in expected_words:
+                if ew in word and ew != "":
+                    matched = True
+                    x, y, w, h = (
+                        data["left"][i],
+                        data["top"][i],
+                        data["width"][i],
+                        data["height"][i],
+                    )
+                    draw.rectangle((x, y, x + w, y + h), outline="red", width=4)
 
-    #         # --- FULL SCREEN MATCH (same size) ---
-    #         if screen_h == ref_h and screen_w == ref_w:
-    #             result = cv2.matchTemplate(screen, ref, cv2.TM_CCOEFF_NORMED)
-    #             similarity = float(np.max(result))
+        highlighted_path = os.path.join(os.getcwd(), f"highlighted_{screenshot_name}")
+        image.save(highlighted_path)
 
-    #             if similarity >= threshold:
-    #                 return True
-    #             else:
-    #                 raise AssertionError(
-    #                     f"Full screen mismatch: similarity={similarity:.3f} < {threshold}"
-    #                 )
+        # LOG INTO ROBOT REPORT
+        if matched:
+            logger.info(f"Verified text (any word matched): <b>{expected_text}</b>", html=True)
+            logger.info(f'<img src="{highlighted_path}" width="450px">', html=True)
+        else:
+            logger.error(f"No words from '{expected_text}' found in screen!", html=True)
+            logger.error(f'<img src="{highlighted_path}" width="450px">', html=True)
+            raise AssertionError(f"Text not detected: {expected_text}")
 
-    #         # --- PARTIAL IMAGE MATCH (small reference) ---
-    #         else:
-    #             result = cv2.matchTemplate(screen, ref, cv2.TM_CCOEFF_NORMED)
-    #             similarity = float(np.max(result))
-
-    #             if similarity >= threshold:
-    #                 return True
-    #             else:
-    #                 raise AssertionError(
-    #                     f"Partial image not found: similarity={similarity:.3f} < {threshold}"
-    #                 )
-
+        return highlighted_path
 
     def verify_image(self, reference_image, threshold=0.90):
-        """
+        """]
         Verifies full or partial image match AND logs both images in Robot report.
         """
 
