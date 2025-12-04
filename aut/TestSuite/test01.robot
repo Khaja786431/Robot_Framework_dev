@@ -35,4 +35,10 @@ Click Element On Phone DUT
 
 verify captured image
     verify_image    C:/Users/nadik/Robot_Framework_dev/aut/Resources/images/Playstore_home.png
+    Sleep    3s
+
+verify text
+    verify_text_on_screen    Kids
+
+
 
