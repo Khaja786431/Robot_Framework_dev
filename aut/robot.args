@@ -1,0 +1,9 @@
+--outputdir Logs
+--listener C:/Users/nadik/Robot_Framework_dev/aut/Keywords/auto_log_listener.py
+--log log.html
+--report report.html
+--output output.xml
+
+
+
+
