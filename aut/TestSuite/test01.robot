@@ -20,6 +20,9 @@ Get Device Id Test
     # Print device ID in Robot logs
     Log    ${id}
 
+Swipe screen
+    swipe   left
+    swipe   right
 
 Click Element On Phone DUT
     # Calls Python keyword: click_element_by_text("Play Store", "Phone")
@@ -39,6 +42,32 @@ verify captured image
 
 verify text
     verify_text_on_screen    Kids
+    Sleep    3s
+
+Swipe screen
+    swipe   up
+    swipe   up
+    swipe   down
+    swipe   down
+    sleep   3s
+Click by image
+    click_by_image  C:/Users/nadik/Robot_Framework_dev/aut/Resources/images/Games_play.png
+
+Click Element On Phone DUT
+    click_element_by_text    Search    ${DUT.Phone}
+    click_element_by_text    Search    ${DUT.Phone}
+    Sleep    2s
+
+Input text
+    input_text  bgmi
+
+# Run command
+#     run_command     adb shell screencap -p /sdcard/screen.png
+#     run_command     adb pull /sdcard/screen.png 
+
+Click by image
+    click_by_image  C:/Users/nadik/Robot_Framework_dev/aut/Resources/images/Search_play.png
+
 
 
 

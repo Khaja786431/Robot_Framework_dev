@@ -8,6 +8,7 @@ from robot.api import logger
 from PIL import Image, ImageDraw, ImageFont
 import pytesseract
 import re
+import subprocess
 
 
 class adb_keywords:
@@ -127,6 +128,7 @@ class adb_keywords:
         else:
             os.system(f"adb shell input tap {x} {y}")
 
+    @keyword
     def take_android_screenshot(self, filename="screen.png"):
         """
         Takes a screenshot from connected Android device using ADB.
@@ -144,10 +146,8 @@ class adb_keywords:
         subprocess.run(["adb", "pull", f"/sdcard/{filename}", local_path])
 
         return local_path
-    
 
-
-   
+    @keyword
     def verify_text_on_screen(self, expected_text, screenshot_name="verify_text.png"):
         screenshot_path = self.take_android_screenshot(screenshot_name)
 
@@ -190,6 +190,7 @@ class adb_keywords:
 
         return highlighted_path
 
+    @keyword
     def verify_image(self, reference_image, threshold=0.90):
         """]
         Verifies full or partial image match AND logs both images in Robot report.
@@ -227,3 +228,152 @@ class adb_keywords:
             raise AssertionError(
                 f"Image mismatch: similarity={similarity:.3f} < {threshold}"
             )
+
+    def get_screen_size(self):
+        """Gets the width and height of the connected Android device."""
+        result = subprocess.run(
+            ["adb", "shell", "wm", "size"],
+            capture_output=True,
+            text=True
+        ).stdout
+
+        match = re.search(r"(\d+)x(\d+)", result)
+        if not match:
+            raise Exception("Unable to get screen size")
+
+        width, height = int(match.group(1)), int(match.group(2))
+        return width, height
+
+    @keyword
+    def swipe(self, direction: str, duration: int = 300):
+        """
+        Performs swipe on DUT.
+        direction = right | left | up | down
+        duration = swipe speed in ms
+        """
+        width, height = self.get_screen_size()
+
+        # Default coordinates
+        start_x = start_y = end_x = end_y = 0
+
+        if direction.lower() == "right":
+            start_x = int(width * 0.1)
+            end_x = int(width * 0.9)
+            start_y = end_y = int(height * 0.5)
+
+        elif direction.lower() == "left":
+            start_x = int(width * 0.9)
+            end_x = int(width * 0.1)
+            start_y = end_y = int(height * 0.5)
+
+        elif direction.lower() == "up":
+            start_y = int(height * 0.8)
+            end_y = int(height * 0.2)
+            start_x = end_x = int(width * 0.5)
+
+        elif direction.lower() == "down":
+            start_y = int(height * 0.2)
+            end_y = int(height * 0.8)
+            start_x = end_x = int(width * 0.5)
+
+        else:
+            raise ValueError(f"Invalid direction: {direction}")
+
+        # Perform swipe
+        cmd = [
+            "adb", "shell", "input", "swipe",
+            str(start_x), str(start_y),
+            str(end_x), str(end_y),
+            str(duration)
+        ]
+
+        subprocess.run(cmd)
+        print(f"Swiped {direction} successfully")
+
+  
+    @keyword
+    def click_by_image(self, reference_image, threshold=0.8):
+        """
+        Takes screenshot using take_android_screenshot(),
+        performs template match, clicks, and logs highlighted image.
+        """
+
+        # 1. Take screenshot
+        screenshot = self.take_android_screenshot("click_temp_screen.png")
+
+        screen = cv2.imread(screenshot)
+        template = cv2.imread(reference_image)
+
+        if screen is None:
+            raise AssertionError("Captured screenshot not found")
+        if template is None:
+            raise AssertionError(f"Template image not found: {reference_image}")
+
+        # 2. Template matching
+        result = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
+        _, max_val, _, max_loc = cv2.minMaxLoc(result)
+
+        if max_val < threshold:
+            raise AssertionError(f"Image not found. Match score={max_val}")
+
+        # 3. Rectangle coordinates
+        h, w = template.shape[:2]
+        top_left = max_loc
+        bottom_right = (top_left[0] + w, top_left[1] + h)
+
+        # 4. Draw rectangle
+        highlighted = screen.copy()
+        cv2.rectangle(highlighted, top_left, bottom_right, (0, 0, 255), 3)
+
+        highlighted_path = "highlighted_match.png"
+        cv2.imwrite(highlighted_path, highlighted)
+
+        # 5. Log image in Robot report
+        logger.info(
+            f"<b>Image matched (confidence={max_val:.3f})</b><br>"
+            f"<img src='{highlighted_path}' width='40%'>",
+            html=True
+        )
+
+        # 6. Tap
+        tap_x = top_left[0] + w // 2
+        tap_y = top_left[1] + h // 2
+
+        subprocess.run(["adb", "shell", "input", "tap", str(tap_x), str(tap_y)])
+
+        return f"Clicked at {tap_x},{tap_y} (match={max_val})"
+    
+    @keyword
+    def input_text(self, text):
+        """
+        Inputs the given text on the connected Android device
+        using ADB input text command.
+        """
+        # Escape spaces for ADB
+        text = text.replace(" ", "%s")
+
+        # adb shell input text "<text>"
+        subprocess.run(["adb", "shell", "input", "text", text])
+
+        return f"Entered text: {text}"
+    
+    @keyword
+    def run_command(self, command):
+        """
+        Runs any shell/adb/system command and returns the output.
+        Usage: Run Command    adb devices
+        """
+
+        # If user passes string, split to list for subprocess
+        if isinstance(command, str):
+            command = command.split()
+
+        result = subprocess.run(command, capture_output=True, text=True)
+
+        stdout = result.stdout.strip()
+        stderr = result.stderr.strip()
+
+        if result.returncode != 0:
+            raise AssertionError(f"Command failed: {stderr}")
+
+        return stdout
