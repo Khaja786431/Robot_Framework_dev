@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.10 on win32)" generated="2025-12-25T15:46:11.971505" rpa="false" schemaversion="5">
+<suite id="s1" name="TestSuite" source="C:\Robot_Framework_dev\aut\TestSuite">
+<suite id="s1-s1" name="Test01" source="C:\Robot_Framework_dev\aut\TestSuite\test01.robot">
+<test id="s1-s1-t1" name="Get Device Id Test" line="15">
+<kw name="Get Device Id" owner="adb_keywords">
+<msg time="2025-12-25T15:46:14.763688" level="INFO">${id} = 10BF3122K4000JT</msg>
+<var>${id}</var>
+<arg>${DUT.Phone}</arg>
+<doc>Robot Framework keyword.
+Returns the device_id for the requested DUT (Phone / Main / Cluster).</doc>
+<status status="PASS" start="2025-12-25T15:46:14.761179" elapsed="0.002509"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-12-25T15:46:14.763688" level="INFO">10BF3122K4000JT</msg>
+<arg>${id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-12-25T15:46:14.763688" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-12-25T15:46:14.759186" elapsed="0.006329"/>
+</test>
+<test id="s1-s1-t2" name="Swipe screen" line="23">
+<kw name="Swipe" owner="adb_keywords">
+<msg time="2025-12-25T15:46:14.774059" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified</msg>
+<arg>left</arg>
+<doc>Performs swipe on DUT.
+direction = right | left | up | down
+duration = swipe speed in ms</doc>
+<status status="FAIL" start="2025-12-25T15:46:14.768550" elapsed="0.011455">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</kw>
+<kw name="Swipe" owner="adb_keywords">
+<arg>right</arg>
+<doc>Performs swipe on DUT.
+direction = right | left | up | down
+duration = swipe speed in ms</doc>
+<status status="NOT RUN" start="2025-12-25T15:46:14.782336" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-25T15:46:14.766512" elapsed="0.016821">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</test>
+<test id="s1-s1-t3" name="Click Element On Phone DUT" line="27">
+<kw name="Click Element By Text" owner="adb_keywords">
+<msg time="2025-12-25T15:46:14.876538" level="FAIL">Text 'Play Store' not found on screen.</msg>
+<arg>Play Store</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Robot keyword: Click UI element using visible text.
+If dut_name provided → use adb -s &lt;device_id&gt;, else use default ADB.</doc>
+<status status="FAIL" start="2025-12-25T15:46:14.786896" elapsed="0.089642">Text 'Play Store' not found on screen.</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-25T15:46:14.879131" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-25T15:46:14.785896" elapsed="0.093235">Text 'Play Store' not found on screen.</status>
+</test>
+<test id="s1-s1-t4" name="verify captured image" line="39">
+<kw name="Verify Image" owner="adb_keywords">
+<msg time="2025-12-25T15:46:14.890169" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified</msg>
+<arg>C:/Users/nadik/Robot_Framework_dev/aut/Resources/images/Playstore_home.png</arg>
+<doc>]
+Verifies full or partial image match AND logs both images in Robot report.</doc>
+<status status="FAIL" start="2025-12-25T15:46:14.882143" elapsed="0.008026">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-25T15:46:14.891352" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-25T15:46:14.881187" elapsed="0.010165">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</test>
+<test id="s1-s1-t5" name="verify text" line="43">
+<kw name="Verify Text On Screen" owner="adb_keywords">
+<msg time="2025-12-25T15:46:14.905020" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified</msg>
+<arg>Kids</arg>
+<status status="FAIL" start="2025-12-25T15:46:14.898956" elapsed="0.006064">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-25T15:46:14.907315" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-25T15:46:14.894655" elapsed="0.013656">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</test>
+<test id="s1-s1-t6" name="Swipe screen" line="47">
+<kw name="Swipe" owner="adb_keywords">
+<msg time="2025-12-25T15:46:14.921662" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified</msg>
+<arg>up</arg>
+<doc>Performs swipe on DUT.
+direction = right | left | up | down
+duration = swipe speed in ms</doc>
+<status status="FAIL" start="2025-12-25T15:46:14.917109" elapsed="0.004553">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</kw>
+<kw name="Swipe" owner="adb_keywords">
+<arg>up</arg>
+<doc>Performs swipe on DUT.
+direction = right | left | up | down
+duration = swipe speed in ms</doc>
+<status status="NOT RUN" start="2025-12-25T15:46:14.921662" elapsed="0.000000"/>
+</kw>
+<kw name="Swipe" owner="adb_keywords">
+<arg>down</arg>
+<doc>Performs swipe on DUT.
+direction = right | left | up | down
+duration = swipe speed in ms</doc>
+<status status="NOT RUN" start="2025-12-25T15:46:14.925872" elapsed="0.001096"/>
+</kw>
+<kw name="Swipe" owner="adb_keywords">
+<arg>down</arg>
+<doc>Performs swipe on DUT.
+direction = right | left | up | down
+duration = swipe speed in ms</doc>
+<status status="NOT RUN" start="2025-12-25T15:46:14.930556" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-25T15:46:14.931554" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-25T15:46:14.909763" elapsed="0.022028">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</test>
+<test id="s1-s1-t7" name="Click by image" line="53">
+<kw name="Click By Image" owner="adb_keywords">
+<msg time="2025-12-25T15:46:14.948073" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified</msg>
+<arg>C:/Users/nadik/Robot_Framework_dev/aut/Resources/images/Games_play.png</arg>
+<doc>Takes screenshot using take_android_screenshot(),
+performs template match, clicks, and logs highlighted image.</doc>
+<status status="FAIL" start="2025-12-25T15:46:14.936754" elapsed="0.011319">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</kw>
+<status status="FAIL" start="2025-12-25T15:46:14.933852" elapsed="0.015225">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</test>
+<test id="s1-s1-t8" name="Click Element On Phone DUT" line="56">
+<kw name="Click Element By Text" owner="adb_keywords">
+<arg>Search</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Robot keyword: Click UI element using visible text.
+If dut_name provided → use adb -s &lt;device_id&gt;, else use default ADB.</doc>
+<status status="PASS" start="2025-12-25T15:46:14.953787" elapsed="0.092030"/>
+</kw>
+<kw name="Click Element By Text" owner="adb_keywords">
+<arg>Search</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Robot keyword: Click UI element using visible text.
+If dut_name provided → use adb -s &lt;device_id&gt;, else use default ADB.</doc>
+<status status="PASS" start="2025-12-25T15:46:15.046357" elapsed="0.066243"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-12-25T15:46:17.126586" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-12-25T15:46:15.113529" elapsed="2.013057"/>
+</kw>
+<status status="PASS" start="2025-12-25T15:46:14.951086" elapsed="2.177474"/>
+</test>
+<test id="s1-s1-t9" name="Input text" line="61">
+<kw name="Input Text" owner="adb_keywords">
+<msg time="2025-12-25T15:46:17.139241" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified</msg>
+<arg>bgmi</arg>
+<doc>Inputs the given text on the connected Android device
+using ADB input text command.</doc>
+<status status="FAIL" start="2025-12-25T15:46:17.132726" elapsed="0.006515">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</kw>
+<status status="FAIL" start="2025-12-25T15:46:17.131729" elapsed="0.007512">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</test>
+<test id="s1-s1-t10" name="Click by image" line="68">
+<kw name="Click By Image" owner="adb_keywords">
+<msg time="2025-12-25T15:46:17.177557" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified</msg>
+<arg>C:/Users/nadik/Robot_Framework_dev/aut/Resources/images/Search_play.png</arg>
+<doc>Takes screenshot using take_android_screenshot(),
+performs template match, clicks, and logs highlighted image.</doc>
+<status status="FAIL" start="2025-12-25T15:46:17.155306" elapsed="0.025492">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</kw>
+<status status="FAIL" start="2025-12-25T15:46:17.149267" elapsed="0.031531">FileNotFoundError: [WinError 2] The system cannot find the file specified</status>
+</test>
+<status status="FAIL" start="2025-12-25T15:46:12.047016" elapsed="5.140721"/>
+</suite>
+<status status="FAIL" start="2025-12-25T15:46:11.975495" elapsed="5.220534"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="8" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="TestSuite" id="s1" pass="2" fail="8" skip="0">TestSuite</stat>
+<stat name="Test01" id="s1-s1" pass="2" fail="8" skip="0">TestSuite.Test01</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-12-25T15:46:14.909763" level="WARN">Multiple tests with name 'Swipe screen' executed in suite 'TestSuite.Test01'.</msg>
+<msg time="2025-12-25T15:46:14.951086" level="WARN">Multiple tests with name 'Click Element On Phone DUT' executed in suite 'TestSuite.Test01'.</msg>
+<msg time="2025-12-25T15:46:17.149267" level="WARN">Multiple tests with name 'Click by image' executed in suite 'TestSuite.Test01'.</msg>
+</errors>
+</robot>

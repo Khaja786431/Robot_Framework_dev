@@ -6,8 +6,8 @@ cls
 echo Checking for pip...
 python ./get-pip.py
 
-echo Installing OpenCV package...
-pip install opencv-python
+echo Installing required packages or libraries...
+pip install opencv-python numpy pillow pytesseract robotframework
 
 echo DONE!
 pause
