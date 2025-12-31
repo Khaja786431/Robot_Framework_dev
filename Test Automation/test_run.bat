@@ -8,7 +8,7 @@ REM Create Logs folder if it doesn't exist
 if not exist Logs mkdir Logs
 
 REM Run Robot Framework with timestamped output directory
-robot --outputdir Logs\Report_%timestamp% TestSuite
+robot --outputdir Logs\Report_%timestamp% TestSuite/test02.robot
 
 echo Execution completed!
 pause
