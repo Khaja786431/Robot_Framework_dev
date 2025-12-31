@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.10 on win32)" generated="2025-12-31T17:46:24.390081" rpa="false" schemaversion="5">
+<suite id="s1" name="Test02" source="C:\Robot_Framework_dev\Test Automation\TestSuite\test02.robot">
+<test id="s1-t1" name="Establish adb connection" line="19">
+<kw name="Get Device Id" owner="adb_keywords">
+<msg time="2025-12-31T17:46:24.822275" level="INFO">${DEVICE_ID} = 10BF3122K4000JT</msg>
+<var>${DEVICE_ID}</var>
+<arg>Phone</arg>
+<doc>Robot Framework keyword.
+Returns the device_id for the requested DUT (Phone / Main / Cluster).</doc>
+<status status="PASS" start="2025-12-31T17:46:24.822275" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-31T17:46:24.822275" level="INFO">${VIDEO_DIR} = videos</msg>
+<var>${VIDEO_DIR}</var>
+<arg>videos</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-31T17:46:24.822275" elapsed="0.000000"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2025-12-31T17:46:24.825631" level="INFO">${SAFE_TEST_NAME} = Establish_adb_connection</msg>
+<var>${SAFE_TEST_NAME}</var>
+<arg>${TEST NAME}</arg>
+<arg>${SPACE}</arg>
+<arg>_</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-12-31T17:46:24.825631" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-31T17:46:24.826629" level="INFO">${VIDEO_NAME} = Establish_adb_connection.mp4</msg>
+<var>${VIDEO_NAME}</var>
+<arg>${SAFE_TEST_NAME}.mp4</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-31T17:46:24.826629" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-31T17:46:24.827622" level="INFO">${DEVICE_VIDEO} = /sdcard/Establish_adb_connection.mp4</msg>
+<var>${DEVICE_VIDEO}</var>
+<arg>/sdcard/${VIDEO_NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-31T17:46:24.827622" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-31T17:46:24.828622" level="INFO">${LOCAL_VIDEO} = videos/Establish_adb_connection.mp4</msg>
+<var>${LOCAL_VIDEO}</var>
+<arg>${VIDEO_DIR}/${VIDEO_NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-31T17:46:24.828622" elapsed="0.000000"/>
+</kw>
+<kw name="Run Command" owner="adb_keywords">
+<arg>if not exist ${VIDEO_DIR} mkdir ${VIDEO_DIR}</arg>
+<doc>Runs any shell/adb/system command and returns the output.
+Usage: Run Command    adb devices</doc>
+<status status="PASS" start="2025-12-31T17:46:24.830642" elapsed="0.035139"/>
+</kw>
+<kw name="Start Screen Recording" owner="adb_keywords">
+<msg time="2025-12-31T17:46:24.878720" level="INFO">${DEVICE_VIDEO} = /sdcard/10BF3122K4000JT_20251231_174624_Establish_adb_connection.mp4</msg>
+<var>${DEVICE_VIDEO}</var>
+<arg>${DEVICE_ID}</arg>
+<arg>${TEST NAME}</arg>
+<status status="PASS" start="2025-12-31T17:46:24.868170" elapsed="0.011546"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-12-31T17:46:26.885198" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-12-31T17:46:24.879949" elapsed="2.005249"/>
+</kw>
+<kw name="Establish Adb Connection" owner="adb_keywords">
+<msg time="2025-12-31T17:46:26.977940" level="INFO">Device '10BF3122K4000JT' is already configured to the framework</msg>
+<arg>${DUT.Phone}</arg>
+<doc>Establish ADB connection using device_id from configuration.
+If already connected, return status.</doc>
+<status status="PASS" start="2025-12-31T17:46:26.887109" elapsed="0.090831"/>
+</kw>
+<kw name="Click By Image" owner="adb_keywords">
+<msg time="2025-12-31T17:46:28.824665" level="FAIL">Image not found. Match score=0.43915683031082153</msg>
+<arg>Games_play.png</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Takes screenshot using take_android_screenshot(),
+performs template match, clicks, and logs highlighted image on specific device.
+`dut_name`: DUT name as defined in configuration.ini</doc>
+<status status="FAIL" start="2025-12-31T17:46:26.978938" elapsed="1.856727">Image not found. Match score=0.43915683031082153</status>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.838872" elapsed="0.000300"/>
+</kw>
+<kw name="Verify Image" owner="adb_keywords">
+<arg>Books_play.png</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Verifies full or partial image match AND logs both images in Robot report.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.840169" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.841064" elapsed="0.000000"/>
+</kw>
+<kw name="Swipe" owner="adb_keywords">
+<arg>up</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Performs swipe on a specific DUT.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.841064" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.842061" elapsed="0.000000"/>
+</kw>
+<kw name="Tap By Coordinates" owner="adb_keywords">
+<arg>Playstore.json</arg>
+<arg>search_icon</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Tap on screen using X,Y coordinates from JSON key.
+JSON is auto-loaded from Resources/Coordinates/.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.842061" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.842959" elapsed="0.000000"/>
+</kw>
+<kw name="Tap By Text" owner="adb_keywords">
+<arg>Action</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Tap on visible text using OCR (Tesseract).
+Works on any screen without XML or UI dump.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.842959" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.843957" elapsed="0.000000"/>
+</kw>
+<kw name="Verify Text Ocr" owner="adb_keywords">
+<arg>Shooter action games</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Verifies COMPLETE text using OCR.
+Passes only if ALL words are present.
+Highlights all matched words in report.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.843957" elapsed="0.000000"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.844802" elapsed="0.000000"/>
+</kw>
+<kw name="Stop Screen Recording" owner="adb_keywords">
+<var>${LOCAL_VIDEO}</var>
+<arg>${DEVICE_ID}</arg>
+<arg>${VIDEO_DIR}</arg>
+<doc>Stop screenrecord and pull video.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.844802" elapsed="0.000000"/>
+</kw>
+<kw name="Get Absolute Path" owner="adb_keywords">
+<var>${ABS_LOCAL_VIDEO}</var>
+<arg>${LOCAL_VIDEO}</arg>
+<doc>Return absolute path of a file.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.844802" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>&lt;a href="file://${ABS_LOCAL_VIDEO}"&gt;📹 Failure Video&lt;/a&gt;</arg>
+<arg>html=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-12-31T17:46:28.845960" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-31T17:46:24.820247" elapsed="4.028384">Image not found. Match score=0.43915683031082153</status>
+</test>
+<status status="FAIL" start="2025-12-31T17:46:24.394387" elapsed="4.459944"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test02" id="s1" pass="0" fail="1" skip="0">Test02</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

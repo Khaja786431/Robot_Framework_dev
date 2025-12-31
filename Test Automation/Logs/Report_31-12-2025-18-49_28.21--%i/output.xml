@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.10 on win32)" generated="2025-12-31T18:49:29.079539" rpa="false" schemaversion="5">
+<suite id="s1" name="Test03" source="C:\Robot_Framework_dev\Test Automation\TestSuite\test03.robot">
+<test id="s1-t1" name="Verify Text on DUT using Appium" line="14">
+<kw name="Verify Text Appium Full" owner="appium_keywords">
+<msg time="2025-12-31T18:49:51.098343" level="FAIL">WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.ts:1103:34)
+    at asyncHandler (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.ts:507:57)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\lib\tools\system-calls.ts:330:13)
+    at AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\device\common.ts:45:21)
+    at AndroidUiautomator2Driver.createSession (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\lib\driver.ts:367:30)
+    at AppiumDriver.createSession (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:360:35)</msg>
+<arg>Kids</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Verifies FULL visible text using Appium (exact match).
+Fails if only partial text is found.</doc>
+<status status="FAIL" start="2025-12-31T18:49:30.533157" elapsed="20.766096">WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.ts:1103:34)
+    at asyncHandler (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.ts:507:57)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\lib\tools\system-calls.ts:330:13)
+    at AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\device\common.ts:45:21)
+    at AndroidUiautomator2Driver.createSession (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\lib\driver.ts:367:30)
+    at AppiumDriver.createSession (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:360:35)</status>
+</kw>
+<kw name="Tap By Coordinates" owner="appium_keywords">
+<arg>Playstore.json</arg>
+<arg>search_icon</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Tap on screen using X,Y coordinates from JSON key using Appium (mobile: tap).</doc>
+<status status="NOT RUN" start="2025-12-31T18:49:51.300705" elapsed="0.000000"/>
+</kw>
+<kw name="Tap By Text" owner="appium_keywords">
+<arg>Action</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Tap on visible text using OCR and Appium clickGesture.
+Works without XML / UI dump.</doc>
+<status status="NOT RUN" start="2025-12-31T18:49:51.301708" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-12-31T18:49:30.530167" elapsed="20.772186">WebDriverException: Message: Could not find a connected Android device in 20000ms
+Stacktrace:
+UnknownError: Could not find a connected Android device in 20000ms
+    at getResponseForW3CError (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\errors.ts:1103:34)
+    at asyncHandler (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.ts:507:57)
+The above error is caused by
+Error: Could not find a connected Android device in 20000ms
+    at ADB.getDevicesWithRetry (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-adb\lib\tools\system-calls.ts:330:13)
+    at AndroidUiautomator2Driver.getDeviceInfoFromCaps (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\device\common.ts:45:21)
+    at AndroidUiautomator2Driver.createSession (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\lib\driver.ts:367:30)
+    at AppiumDriver.createSession (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:360:35)</status>
+</test>
+<status status="FAIL" start="2025-12-31T18:49:29.083546" elapsed="22.229850"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test03" id="s1" pass="0" fail="1" skip="0">Test03</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

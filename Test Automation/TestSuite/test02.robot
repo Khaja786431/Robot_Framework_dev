@@ -44,5 +44,3 @@ Establish adb connection
 
     ${ABS_LOCAL_VIDEO}=    get_absolute_path    ${LOCAL_VIDEO}
     Log    <a href="file://${ABS_LOCAL_VIDEO}">📹 Failure Video</a>    html=True
-
-    

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.10 on win32)" generated="2025-12-31T18:38:24.335748" rpa="false" schemaversion="5">
+<suite id="s1" name="Test03" source="C:\Robot_Framework_dev\Test Automation\TestSuite\test03.robot">
+<test id="s1-t1" name="Verify Text on DUT using Appium" line="14">
+<kw name="Verify Text Appium Full" owner="appium_keywords">
+<msg time="2025-12-31T18:38:31.831775" level="INFO" html="true">&lt;b&gt;Verifying text:&lt;/b&gt; 'Kids'</msg>
+<msg time="2025-12-31T18:38:33.424129" level="INFO" html="true">&lt;b&gt;Visible texts on screen:&lt;/b&gt;&lt;br&gt;In-app purchases&lt;br&gt;Ends on 1/21/26&lt;br&gt;Watch Feludar Goyendagiri: Royal Bengal Rawhoshyo from 24th December&lt;br&gt;Install&lt;br&gt;In-app purchases&lt;br&gt;Sponsored&lt;br&gt;Suggested for you&lt;br&gt;Dating apps&lt;br&gt;For you&lt;br&gt;Top charts&lt;br&gt;Kids&lt;br&gt;Categories&lt;br&gt;Games&lt;br&gt;Apps&lt;br&gt;Search&lt;br&gt;Books&lt;br&gt;You</msg>
+<msg time="2025-12-31T18:38:33.424129" level="INFO" html="true">&lt;b style='color:green'&gt;TEXT VERIFIED: Kids&lt;/b&gt;</msg>
+<arg>Kids</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Verifies FULL visible text using Appium (exact match).
+Fails if only partial text is found.</doc>
+<status status="PASS" start="2025-12-31T18:38:25.029124" elapsed="8.396449"/>
+</kw>
+<kw name="Tap By Coordinates" owner="appium_keywords">
+<msg time="2025-12-31T18:38:33.550739" level="FAIL">UnknownMethodException: Message: Unsupported execute method 'mobile: tap', did you mean 'mobile: type'? Make sure the installed AndroidUiautomator2Driver is up-to-date. Execute methods available in the current driver version are: mobile: type, mobile: nfc, mobile: lock, mobile: shell, mobile: listSms, mobile: clearApp, mobile: unlock, mobile: gsmCall, mobile: scroll, mobile: installApp, mobile: toggleGps, mobile: statusBar, mobile: sendSms, mobile: powerAc, mobile: deepLink, mobile: pushFile, mobile: pullFile, mobile: activateApp, mobile: removeApp, mobile: broadcast, mobile: isLocked, mobile: bluetooth, mobile: setUiMode, mobile: getUiMode, mobile: gsmSignal, mobile: gsmVoice, mobile: pressKey, mobile: deleteFile, mobile: terminateApp, mobile: stopService, mobile: sensorSet, mobile: pullFolder, mobile: startService, mobile: getContexts, mobile: deviceidle, mobile: fingerprint, mobile: networkSpeed, mobile: dragGesture, mobile: acceptAlert, mobile: batteryInfo, mobile: deviceInfo, mobile: setClipboard, mobile: getClipboard, mobile: listWindows, mobile: listDisplays, mobile: queryAppState, mobile: backgroundApp, mobile: startActivity, mobile: hideKeyboard, mobile: isGpsEnabled, mobile: getSystemBars, mobile: powerCapacity, mobile: getAppStrings, mobile: flingGesture, mobile: clickGesture, mobile: swipeGesture, mobile: scrollBackTo, mobile: viewportRect, mobile: screenshots, mobile: getDeviceTime, mobile: isAppInstalled, mobile: setGeolocation, mobile: getGeolocation, mobile: scrollGesture, mobile: dismissAlert, mobile: getPermissions, mobile: scheduleAction, mobile: getNotifications, mobile: refreshGpsCache, mobile: getConnectivity, mobile: setConnectivity, mobile: isKeyboardShown, mobile: sendTrimMemory, mobile: resetGeolocation, mobile: stopLogsBroadcast, mobile: getDisplayDensity, mobile: getCurrentPackage, mobile: longClickGesture, mobile: pinchOpenGesture, mobile: openNotifications, mobile: getActionHistory, mobile: unscheduleAction, mobile: startLogsBroadcast, mobile: changePermissions, mobile: getPerformanceData, mobile: pinchCloseGesture, mobile: installMultipleApks, mobile: stopScreenStreaming, mobile: getCurrentActivity, mobile: doubleClickGesture, mobile: viewportScreenshot, mobile: replaceElementValue, mobile: performEditorAction, mobile: startScreenStreaming, mobile: getChromeCapabilities, mobile: execEmuConsoleCommand, mobile: getPerformanceDataTypes, mobile: resetAccessibilityCache, mobile: injectEmulatorCameraImage, mobile: stopMediaProjectionRecording, mobile: startMediaProjectionRecording, mobile: isMediaProjectionRecordingRunning
+Stacktrace:
+UnsupportedOperationError: Unsupported execute method 'mobile: tap', did you mean 'mobile: type'? Make sure the installed AndroidUiautomator2Driver is up-to-date. Execute methods available in the current driver version are: mobile: type, mobile: nfc, mobile: lock, mobile: shell, mobile: listSms, mobile: clearApp, mobile: unlock, mobile: gsmCall, mobile: scroll, mobile: installApp, mobile: toggleGps, mobile: statusBar, mobile: sendSms, mobile: powerAc, mobile: deepLink, mobile: pushFile, mobile: pullFile, mobile: activateApp, mobile: removeApp, mobile: broadcast, mobile: isLocked, mobile: bluetooth, mobile: setUiMode, mobile: getUiMode, mobile: gsmSignal, mobile: gsmVoice, mobile: pressKey, mobile: deleteFile, mobile: terminateApp, mobile: stopService, mobile: sensorSet, mobile: pullFolder, mobile: startService, mobile: getContexts, mobile: deviceidle, mobile: fingerprint, mobile: networkSpeed, mobile: dragGesture, mobile: acceptAlert, mobile: batteryInfo, mobile: deviceInfo, mobile: setClipboard, mobile: getClipboard, mobile: listWindows, mobile: listDisplays, mobile: queryAppState, mobile: backgroundApp, mobile: startActivity, mobile: hideKeyboard, mobile: isGpsEnabled, mobile: getSystemBars, mobile: powerCapacity, mobile: getAppStrings, mobile: flingGesture, mobile: clickGesture, mobile: swipeGesture, mobile: scrollBackTo, mobile: viewportRect, mobile: screenshots, mobile: getDeviceTime, mobile: isAppInstalled, mobile: setGeolocation, mobile: getGeolocation, mobile: scrollGesture, mobile: dismissAlert, mobile: getPermissions, mobile: scheduleAction, mobile: getNotifications, mobile: refreshGpsCache, mobile: getConnectivity, mobile: setConnectivity, mobile: isKeyboardShown, mobile: sendTrimMemory, mobile: resetGeolocation, mobile: stopLogsBroadcast, mobile: getDisplayDensity, mobile: getCurrentPackage, mobile: longClickGesture, mobile: pinchOpenGesture, mobile: openNotifications, mobile: getActionHistory, mobile: unscheduleAction, mobile: startLogsBroadcast, mobile: changePermissions, mobile: getPerformanceData, mobile: pinchCloseGesture, mobile: installMultipleApks, mobile: stopScreenStreaming, mobile: getCurrentActivity, mobile: doubleClickGesture, mobile: viewportScreenshot, mobile: replaceElementValue, mobile: performEditorAction, mobile: startScreenStreaming, mobile: getChromeCapabilities, mobile: execEmuConsoleCommand, mobile: getPerformanceDataTypes, mobile: resetAccessibilityCache, mobile: injectEmulatorCameraImage, mobile: stopMediaProjectionRecording, mobile: startMediaProjectionRecording, mobile: isMediaProjectionRecordingRunning
+    at AndroidUiautomator2Driver.executeMethod (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\commands\execute.ts:52:13)
+    at AndroidUiautomator2Driver.execute (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\execute.ts:27:23)
+    at runCommandPromise (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\driver.ts:116:20)
+    at C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:171:12
+    at AsyncLock._promiseTry (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:306:31)
+    at exec (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:170:9)
+    at AsyncLock.acquire (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:189:3)
+    at AndroidUiautomator2Driver.executeCommand (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\driver.ts:160:39)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at defaultBehavior (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:730:14)
+    at AppiumDriver.executeWrappedCommand (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:843:16)
+    at AppiumDriver.executeCommand (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:742:17)
+    at asyncHandler (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.ts:409:19)</msg>
+<arg>Playstore.json</arg>
+<arg>search_icon</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Tap on screen using X,Y coordinates from JSON key using Appium (mobile: tap).</doc>
+<status status="FAIL" start="2025-12-31T18:38:33.427365" elapsed="0.137591">UnknownMethodException: Message: Unsupported execute method 'mobile: tap', did you mean 'mobile: type'? Make sure the installed AndroidUiautomator2Driver is up-to-date. Execute methods available in the current driver version are: mobile: type, mobile: nfc, mobile: lock, mobile: shell, mobile: listSms, mobile: clearApp, mobile: unlock, mobile: gsmCall, mobile: scroll, mobile: installApp, mobile: toggleGps, mobile: statusBar, mobile: sendSms, mobile: powerAc, mobile: deepLink, mobile: pushFile, mobile: pullFile, mobile: activateApp, mobile: removeApp, mobile: broadcast, mobile: isLocked, mobile: bluetooth, mobile: setUiMode, mobile: getUiMode, mobile: gsmSignal, mobile: gsmVoice, mobile: pressKey, mobile: deleteFile, mobile: terminateApp, mobile: stopService, mobile: sensorSet, mobile: pullFolder, mobile: startService, mobile: getContexts, mobile: deviceidle, mobile: fingerprint, mobile: networkSpeed, mobile: dragGesture, mobile: acceptAlert, mobile: batteryInfo, mobile: deviceInfo, mobile: setClipboard, mobile: getClipboard, mobile: listWindows, mobile: listDisplays, mobile: queryAppState, mobile: backgroundApp, mobile: startActivity, mobile: hideKeyboard, mobile: isGpsEnabled, mobile: getSystemBars, mobile: powerCapacity, mobile: getAppStrings, mobile: flingGesture, mobile: clickGesture, mobile: swipeGesture, mobile: scrollBackTo, mobile: viewportRect, mobile: screenshots, mobile: getDeviceTime, mobile: isAppInstalled, mobile: setGeolocation, mobile: getGeolocation, mobile: scrollGesture, mobile: dismissAlert, mobile: getPermission...
+    [ Message content over the limit has been removed. ]
+    at C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:171:12
+    at AsyncLock._promiseTry (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:306:31)
+    at exec (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:170:9)
+    at AsyncLock.acquire (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:189:3)
+    at AndroidUiautomator2Driver.executeCommand (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\driver.ts:160:39)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at defaultBehavior (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:730:14)
+    at AppiumDriver.executeWrappedCommand (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:843:16)
+    at AppiumDriver.executeCommand (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:742:17)
+    at asyncHandler (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.ts:409:19)</status>
+</kw>
+<status status="FAIL" start="2025-12-31T18:38:25.028125" elapsed="8.539155">UnknownMethodException: Message: Unsupported execute method 'mobile: tap', did you mean 'mobile: type'? Make sure the installed AndroidUiautomator2Driver is up-to-date. Execute methods available in the current driver version are: mobile: type, mobile: nfc, mobile: lock, mobile: shell, mobile: listSms, mobile: clearApp, mobile: unlock, mobile: gsmCall, mobile: scroll, mobile: installApp, mobile: toggleGps, mobile: statusBar, mobile: sendSms, mobile: powerAc, mobile: deepLink, mobile: pushFile, mobile: pullFile, mobile: activateApp, mobile: removeApp, mobile: broadcast, mobile: isLocked, mobile: bluetooth, mobile: setUiMode, mobile: getUiMode, mobile: gsmSignal, mobile: gsmVoice, mobile: pressKey, mobile: deleteFile, mobile: terminateApp, mobile: stopService, mobile: sensorSet, mobile: pullFolder, mobile: startService, mobile: getContexts, mobile: deviceidle, mobile: fingerprint, mobile: networkSpeed, mobile: dragGesture, mobile: acceptAlert, mobile: batteryInfo, mobile: deviceInfo, mobile: setClipboard, mobile: getClipboard, mobile: listWindows, mobile: listDisplays, mobile: queryAppState, mobile: backgroundApp, mobile: startActivity, mobile: hideKeyboard, mobile: isGpsEnabled, mobile: getSystemBars, mobile: powerCapacity, mobile: getAppStrings, mobile: flingGesture, mobile: clickGesture, mobile: swipeGesture, mobile: scrollBackTo, mobile: viewportRect, mobile: screenshots, mobile: getDeviceTime, mobile: isAppInstalled, mobile: setGeolocation, mobile: getGeolocation, mobile: scrollGesture, mobile: dismissAlert, mobile: getPermission...
+    [ Message content over the limit has been removed. ]
+    at C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:171:12
+    at AsyncLock._promiseTry (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:306:31)
+    at exec (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:170:9)
+    at AsyncLock.acquire (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\async-lock\lib\index.js:189:3)
+    at AndroidUiautomator2Driver.executeCommand (C:\Users\Khaja Vali\.appium\node_modules\appium-uiautomator2-driver\node_modules\@appium\base-driver\lib\basedriver\driver.ts:160:39)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at defaultBehavior (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:730:14)
+    at AppiumDriver.executeWrappedCommand (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:843:16)
+    at AppiumDriver.executeCommand (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\lib\appium.js:742:17)
+    at asyncHandler (C:\Users\Khaja Vali\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\protocol\protocol.ts:409:19)</status>
+</test>
+<status status="FAIL" start="2025-12-31T18:38:24.340074" elapsed="9.250741"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test03" id="s1" pass="0" fail="1" skip="0">Test03</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

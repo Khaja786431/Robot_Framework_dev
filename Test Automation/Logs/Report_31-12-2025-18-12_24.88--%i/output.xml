@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.10 on win32)" generated="2025-12-31T18:12:25.536821" rpa="false" schemaversion="5">
+<suite id="s1" name="Test02" source="C:\Robot_Framework_dev\Test Automation\TestSuite\test02.robot">
+<test id="s1-t1" name="Verify Text on DUT using Appium" line="49">
+<kw name="Verify Text Appium Full" owner="appium_keywords">
+<msg time="2025-12-31T18:12:35.547515" level="INFO" html="true">&lt;b&gt;Verifying text:&lt;/b&gt; 'Albums'</msg>
+<msg time="2025-12-31T18:12:37.142252" level="INFO" html="true">&lt;b&gt;Visible texts on screen:&lt;/b&gt;&lt;br&gt;Wednesday, Dec 31&lt;br&gt;6:12&lt;br&gt;V-Appstore&lt;br&gt;Albums&lt;br&gt;Play Store&lt;br&gt;Google&lt;br&gt;Themes&lt;br&gt;iQOO Store&lt;br&gt;Browser&lt;br&gt;Settings</msg>
+<msg time="2025-12-31T18:12:37.142252" level="INFO" html="true">&lt;b style='color:green'&gt;TEXT VERIFIED: Albums&lt;/b&gt;</msg>
+<arg>Albums</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Verifies FULL visible text using Appium (exact match).
+Fails if only partial text is found.</doc>
+<status status="PASS" start="2025-12-31T18:12:26.633911" elapsed="10.508341"/>
+</kw>
+<status status="PASS" start="2025-12-31T18:12:26.631353" elapsed="10.515444"/>
+</test>
+<status status="PASS" start="2025-12-31T18:12:25.541123" elapsed="11.609383"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test02" id="s1" pass="1" fail="0" skip="0">Test02</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
