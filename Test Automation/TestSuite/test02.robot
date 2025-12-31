@@ -36,6 +36,10 @@ Establish adb connection
     Sleep    2s
     tap_by_coordinates    Playstore.json    search_icon    ${DUT.Phone}
     Sleep    2s
+    tap_by_text    Action    ${DUT.Phone}
+    Sleep    2s
+    verify_text_ocr    Shooter action games    ${DUT.Phone}
+    Sleep    2s
     ${LOCAL_VIDEO}=    stop_screen_recording    ${DEVICE_ID}    ${VIDEO_DIR}
 
     ${ABS_LOCAL_VIDEO}=    get_absolute_path    ${LOCAL_VIDEO}

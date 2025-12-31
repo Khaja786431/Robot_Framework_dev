@@ -112,83 +112,6 @@ class adb_keywords:
         raise AssertionError(f"Failed to establish ADB connection for device '{device_id}'")
 
 
-
-    @keyword
-    def click_element_by_text(self, text, dut_name=None):
-        """
-        Robot keyword: Click UI element using visible text.
-        If dut_name provided → use adb -s <device_id>, else use default ADB.
-        """
-
-        # Default no device_id
-        device_id = None
-
-        # If user passed DUT name, get device_id from config
-        if dut_name:
-            device_id = self.get_device_id(dut_name)
-
-        # ---- STEP 1: Dump UI XML from device ----
-        if device_id:
-            # Dump UI hierarchy into /sdcard/ui.xml
-            os.system(f"adb -s {device_id} shell uiautomator dump /sdcard/ui.xml")
-            # Pull it from phone → local folder
-            os.system(f"adb -s {device_id} pull /sdcard/ui.xml .")
-        else:
-            # Same but without device id
-            os.system("adb shell uiautomator dump /sdcard/ui.xml")
-            os.system("adb pull /sdcard/ui.xml .")
-
-        # ---- STEP 2: Parse pulled XML ----
-        tree = ET.parse("ui.xml")   # Load XML file
-        root = tree.getroot()       # Get root <hierarchy> node
-
-        # ---- STEP 3: Search all nodes for matching text ----
-        for node in root.iter():    # Iterate every element in UI tree
-            if node.attrib.get("text") == text:   # If node has this text
-                bounds = node.attrib["bounds"]    # Example: "[100,200][300,400]"
-
-                # Convert bounds → center tap coordinates
-                x, y = self._get_center(bounds)
-
-                # Perform tap on device
-                self._tap(x, y, device_id)
-
-                return f"Clicked '{text}' on DUT '{dut_name}'"
-
-        # If not found anywhere →
-        raise Exception(f"Text '{text}' not found on screen.")
-
-    def _get_center(self, bounds):
-        """
-        Convert Android bounds string into center coordinates.
-        Example input:  '[100,200][300,400]'
-        """
-
-        # Remove [] and split into numbers
-        bounds = bounds.replace('[', '').replace(']', ',').split(',')
-
-        # Convert string values to integers
-        x1, y1, x2, y2 = map(int, bounds[:4])
-
-        # Calculate center point
-        center_x = (x1 + x2) // 2
-        center_y = (y1 + y2) // 2
-
-        return center_x, center_y
-
-    def _tap(self, x, y, device_id=None):
-        """
-        Performs actual tapping on the device screen using ADB input tap.
-        """
-
-        # If specific device ID exists, include -s <id>
-        if device_id:
-            os.system(f"adb -s {device_id} shell input tap {x} {y}")
-
-        # Otherwise use default connected device
-        else:
-            os.system(f"adb shell input tap {x} {y}")
-
     @keyword
     def take_android_screenshot(self, filename="screen.png", device_id=None):
         """
@@ -208,51 +131,7 @@ class adb_keywords:
         subprocess.run(["adb"] + device_arg + ["pull", f"/sdcard/{filename}", local_path])
 
         return local_path
-
-    @keyword
-    def verify_text_on_screen(self, expected_text, screenshot_name="verify_text.png"):
-        screenshot_path = self.take_android_screenshot(screenshot_name)
-
-        image = Image.open(screenshot_path)
-        gray = image.convert("L")
-        gray = gray.point(lambda x: 0 if x < 150 else 255)
-
-        data = pytesseract.image_to_data(gray, output_type=pytesseract.Output.DICT)
-        draw = ImageDraw.Draw(image)
-
-        expected_words = expected_text.lower().split()   # Split into words
-        matched = False
-
-        for i in range(len(data["text"])):
-            word = data["text"][i].strip().lower()
-
-            # Check each expected word instead of full sentence
-            for ew in expected_words:
-                if ew in word and ew != "":
-                    matched = True
-                    x, y, w, h = (
-                        data["left"][i],
-                        data["top"][i],
-                        data["width"][i],
-                        data["height"][i],
-                    )
-                    draw.rectangle((x, y, x + w, y + h), outline="red", width=4)
-
-        highlighted_path = os.path.join(os.getcwd(), f"highlighted_{screenshot_name}")
-        image.save(highlighted_path)
-
-        # LOG INTO ROBOT REPORT
-        if matched:
-            logger.info(f"Verified text (any word matched): <b>{expected_text}</b>", html=True)
-            logger.info(f'<img src="{highlighted_path}" width="450px">', html=True)
-        else:
-            logger.error(f"No words from '{expected_text}' found in screen!", html=True)
-            logger.error(f'<img src="{highlighted_path}" width="450px">', html=True)
-            raise AssertionError(f"Text not detected: {expected_text}")
-
-        return highlighted_path
-        
-    
+ 
 
     @keyword
     def verify_image(self, image_name, dut_name=None, threshold=0.90):
@@ -615,3 +494,131 @@ class adb_keywords:
         msg = f"Tapped {key_name} at ({x},{y}) on device {device_id}"
         logger.info(msg)
         return msg
+    
+    @keyword
+    def tap_by_text(self, text, dut_name, threshold=0.8):
+        """
+        Tap on visible text using OCR (Tesseract).
+        Works on any screen without XML or UI dump.
+        """
+
+        import cv2
+        import pytesseract
+        import subprocess
+        from robot.api import logger
+
+        # Get device ID
+        device_id = self.get_device_id(dut_name)
+
+        # Take screenshot
+        screenshot_path = self.take_android_screenshot("ocr_screen.png", device_id)
+
+        # Read image
+        img = cv2.imread(screenshot_path)
+        if img is None:
+            raise AssertionError("Failed to load screenshot for OCR")
+
+        # OCR text detection
+        data = pytesseract.image_to_data(img, output_type=pytesseract.Output.DICT)
+
+        found = False
+        for i, t in enumerate(data['text']):
+            if t.strip() == text:
+                x, y, w, h = data['left'][i], data['top'][i], data['width'][i], data['height'][i]
+                tap_x = x + w // 2
+                tap_y = y + h // 2
+
+                # Draw rectangle for reporting
+                cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 3)
+                cv2.imwrite("ocr_highlighted.png", img)
+
+                # Tap
+                subprocess.run(
+                    ["adb", "-s", device_id, "shell", "input", "tap", str(tap_x), str(tap_y)],
+                    check=True
+                )
+
+                logger.info(f"Tapped on text '{text}' at ({tap_x},{tap_y}) on device {device_id}")
+                logger.info(f"<img src='ocr_highlighted.png' width='40%'>", html=True)
+                found = True
+                break
+
+        if not found:
+            logger.info(f"<b style='color:red'>Text '{text}' not found via OCR</b>", html=True)
+            raise AssertionError(f"Text '{text}' not found on screen")
+
+
+    @keyword
+    def verify_text_ocr(self, expected_text, dut_name, confidence_threshold=60):
+        """
+        Verifies COMPLETE text using OCR.
+        Passes only if ALL words are present.
+        Highlights all matched words in report.
+        """
+
+        import cv2
+        import pytesseract
+        from robot.api import logger
+
+        device_id = self.get_device_id(dut_name)
+
+        screenshot = self.take_android_screenshot("verify_text_full.png", device_id)
+        img = cv2.imread(screenshot)
+
+        if img is None:
+            raise AssertionError("Failed to load screenshot")
+
+        data = pytesseract.image_to_data(
+            img,
+            output_type=pytesseract.Output.DICT
+        )
+
+        # Normalize expected words
+        expected_words = expected_text.lower().split()
+
+        detected_words = []
+        word_boxes = {}
+
+        for i, detected in enumerate(data["text"]):
+            word = detected.strip().lower()
+            conf = int(data["conf"][i])
+
+            if conf < confidence_threshold or not word:
+                continue
+
+            detected_words.append(word)
+            word_boxes[word] = (
+                data["left"][i],
+                data["top"][i],
+                data["width"][i],
+                data["height"][i]
+            )
+
+        missing_words = [w for w in expected_words if w not in detected_words]
+
+        # FAIL CASE
+        if missing_words:
+            logger.info(
+                f"<b style='color:red'>Text Verification FAILED</b><br>"
+                f"Expected: <b>{expected_text}</b><br>"
+                f"Missing words: <b>{', '.join(missing_words)}</b>",
+                html=True
+            )
+            raise AssertionError(f"Missing words: {missing_words}")
+
+        # PASS CASE → Highlight all matched words
+        for word in expected_words:
+            x, y, w, h = word_boxes[word]
+            cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 3)
+
+        highlighted = "verify_text_full_highlighted.png"
+        cv2.imwrite(highlighted, img)
+
+        logger.info(
+            f"<b style='color:green'>Text Verification PASSED</b><br>"
+            f"Verified text: <b>{expected_text}</b><br>"
+            f"<img src='{highlighted}' width='40%'>",
+            html=True
+        )
+
+        return f"Verified full text: {expected_text}"
