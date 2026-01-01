@@ -13,6 +13,7 @@ echo DONE!
 pause
 exit
 
+@REM Command to start appium server "appium --allow-insecure=uiautomator2:adb_shell"
 
 
 @REM #To switch branch

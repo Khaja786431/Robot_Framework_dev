@@ -444,7 +444,7 @@ class adb_keywords:
         subprocess.run(cmd_pull, check=True)
         logger.info(f"Video pulled to {local_video_path}")
         return local_video_path
-    
+    q   
     @keyword
     def get_absolute_path(self, path):
         """Return absolute path of a file."""

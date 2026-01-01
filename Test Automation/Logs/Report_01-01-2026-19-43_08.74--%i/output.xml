@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.10 on win32)" generated="2026-01-01T19:43:09.480005" rpa="false" schemaversion="5">
+<suite id="s1" name="Test03" source="C:\Robot_Framework_dev\Test Automation\TestSuite\test03.robot">
+<test id="s1-t1" name="Verify Keywords on DUT using Appium" line="15">
+<kw name="Start Screen Recording" owner="appium_keywords">
+<msg time="2026-01-01T19:43:10.815324" level="INFO">🎥 DUT name resolved to: Phone</msg>
+<msg time="2026-01-01T19:43:10.820199" level="INFO">📱 Device ID resolved to: 10BF3122K4000JT</msg>
+<msg time="2026-01-01T19:43:10.820199" level="INFO">📁 Device video path: /sdcard/10BF3122K4000JT_20260101_194310_Swipe_Test.mp4</msg>
+<msg time="2026-01-01T19:43:11.335940" level="INFO">✅ Screen recording started successfully</msg>
+<arg>${DUT.Phone}</arg>
+<arg>Swipe_Test</arg>
+<doc>Start Android screen recording using adb screenrecord.</doc>
+<status status="PASS" start="2026-01-01T19:43:10.815324" elapsed="0.520976"/>
+</kw>
+<kw name="Verify Text Appium Full" owner="appium_keywords">
+<msg time="2026-01-01T19:43:14.908935" level="INFO" html="true">&lt;b&gt;Verifying text:&lt;/b&gt; 'Kids'</msg>
+<msg time="2026-01-01T19:43:18.559382" level="INFO" html="true">&lt;b&gt;Visible texts on screen:&lt;/b&gt;&lt;br&gt;Trending&lt;br&gt;Stream Fallout Season 2 on Prime Video&lt;br&gt;Plus more dark, fantastic picks&lt;br&gt;Sponsored&lt;br&gt;Suggested for you&lt;br&gt;Recommended for you&lt;br&gt;For you&lt;br&gt;Top charts&lt;br&gt;Kids&lt;br&gt;Categories&lt;br&gt;Games&lt;br&gt;Apps&lt;br&gt;Search&lt;br&gt;Books&lt;br&gt;You</msg>
+<msg time="2026-01-01T19:43:18.559382" level="INFO" html="true">&lt;b style='color:green'&gt;TEXT VERIFIED: Kids&lt;/b&gt;</msg>
+<arg>Kids</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Verifies FULL visible text using Appium (exact match).
+Fails if only partial text is found.</doc>
+<status status="PASS" start="2026-01-01T19:43:11.338497" elapsed="7.221465"/>
+</kw>
+<kw name="Tap By Coordinates" owner="appium_keywords">
+<msg time="2026-01-01T19:43:18.653005" level="INFO" html="true">&lt;b&gt;Tapped 'search_icon' at (625,2593) on DUT 'Phone'&lt;/b&gt;</msg>
+<arg>Playstore.json</arg>
+<arg>search_icon</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Tap on screen using X,Y coordinates from JSON key using Appium (mobile: tap).</doc>
+<status status="PASS" start="2026-01-01T19:43:18.561000" elapsed="0.092005"/>
+</kw>
+<kw name="Tap By Text" owner="appium_keywords">
+<msg time="2026-01-01T19:43:21.098890" level="INFO" html="true">&lt;b style='color:green'&gt;Tapped on text:&lt;/b&gt; Action&lt;br&gt;&lt;img src='ocr_highlighted.png' width='40%'&gt;</msg>
+<arg>Action</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Tap on visible text using OCR and Appium clickGesture.
+Works without XML / UI dump.</doc>
+<status status="PASS" start="2026-01-01T19:43:18.658242" elapsed="2.440648"/>
+</kw>
+<kw name="Verify Image Element" owner="appium_keywords">
+<msg time="2026-01-01T19:43:21.669728" level="INFO" html="true">&lt;b&gt;Captured Screen:&lt;/b&gt;&lt;br&gt;&lt;img src='appium_verify_image_1767276801.png' width='300px'&gt;</msg>
+<msg time="2026-01-01T19:43:21.669728" level="INFO" html="true">&lt;b&gt;Reference Image:&lt;/b&gt;&lt;br&gt;&lt;img src='C:\Robot_Framework_dev\Test Automation\Resources\images\Books_play.png' width='300px'&gt;</msg>
+<msg time="2026-01-01T19:43:21.982786" level="INFO" html="true">&lt;b&gt;Similarity Score:&lt;/b&gt; 1.000</msg>
+<msg time="2026-01-01T19:43:22.061124" level="INFO" html="true">&lt;b&gt;Matched Area:&lt;/b&gt;&lt;br&gt;&lt;img src='verify_image_highlighted_1767276801.png' width='300px'&gt;</msg>
+<msg time="2026-01-01T19:43:22.061124" level="INFO" html="true">&lt;b style='color:green'&gt;Image Verification: PASS&lt;/b&gt;</msg>
+<arg>Books_play.png</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Verifies image on screen using Appium screenshot + OpenCV template matching.
+Logs highlighted match image in Robot report.</doc>
+<status status="PASS" start="2026-01-01T19:43:21.110322" elapsed="0.964886"/>
+</kw>
+<kw name="Click By Image" owner="appium_keywords">
+<msg time="2026-01-01T19:43:22.941746" level="INFO" html="true">&lt;b&gt;Image Match Score:&lt;/b&gt; 1.000</msg>
+<msg time="2026-01-01T19:43:23.013457" level="INFO" html="true">&lt;b&gt;Matched Image (confidence=1.000)&lt;/b&gt;&lt;br&gt;&lt;img src='click_image_highlighted_1767276802.png' width='40%'&gt;</msg>
+<msg time="2026-01-01T19:43:23.091067" level="INFO">Clicked at (125,2593) | match=1.000</msg>
+<arg>Games_play.png</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Takes screenshot using Appium,
+performs template match, clicks on matched area,
+and logs highlighted image in Robot report.</doc>
+<status status="PASS" start="2026-01-01T19:43:22.076473" elapsed="1.030290"/>
+</kw>
+<kw name="Run Command" owner="appium_keywords">
+<msg time="2026-01-01T19:43:23.111141" level="INFO">Executing command on Phone: getprop ro.build.version.release</msg>
+<msg time="2026-01-01T19:43:23.240168" level="INFO">OUTPUT:15
+</msg>
+<arg>getprop ro.build.version.release</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Executes shell command on a DUT using Appium mobile:shell
+Works across Appium versions (dict or string return)</doc>
+<status status="PASS" start="2026-01-01T19:43:23.111141" elapsed="0.129027"/>
+</kw>
+<kw name="Press Key" owner="appium_keywords">
+<msg time="2026-01-01T19:43:23.243752" level="INFO" html="true">&lt;b&gt;Pressing Keyevent:&lt;/b&gt; BACK on Phone</msg>
+<arg>BACK</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Press Android hardware/system key using keyevent.
+Ex: HOME, BACK, POWER, VOLUME_UP, VOLUME_DOWN, ENTER..</doc>
+<status status="PASS" start="2026-01-01T19:43:23.242752" elapsed="0.150917"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-01T19:43:25.415830" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-01T19:43:23.399244" elapsed="2.016586"/>
+</kw>
+<kw name="Scroll Top Bottom" owner="appium_keywords">
+<msg time="2026-01-01T19:43:28.272281" level="INFO">Scrolled DOWN | percent=0.9 | DUT=Phone</msg>
+<arg>${DUT.Phone}</arg>
+<arg>down</arg>
+<doc>Safe scroll that avoids Android system gestures.</doc>
+<status status="PASS" start="2026-01-01T19:43:25.417708" elapsed="2.854573"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-01T19:43:30.291957" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-01T19:43:28.276626" elapsed="2.015331"/>
+</kw>
+<kw name="Press Key" owner="appium_keywords">
+<msg time="2026-01-01T19:43:30.294325" level="INFO" html="true">&lt;b&gt;Pressing Keyevent:&lt;/b&gt; HOME on Phone</msg>
+<arg>HOME</arg>
+<arg>${DUT.Phone}</arg>
+<doc>Press Android hardware/system key using keyevent.
+Ex: HOME, BACK, POWER, VOLUME_UP, VOLUME_DOWN, ENTER..</doc>
+<status status="PASS" start="2026-01-01T19:43:30.293331" elapsed="0.143725"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-01T19:43:32.446713" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-01T19:43:30.444330" elapsed="2.002383"/>
+</kw>
+<kw name="Swipe Left Right" owner="appium_keywords">
+<msg time="2026-01-01T19:43:34.347430" level="INFO">Swiped RIGHT | percent=0.9 | DUT=Phone</msg>
+<arg>${DUT.Phone}</arg>
+<arg>right</arg>
+<doc>Safe horizontal swipe avoiding Android back gestures.</doc>
+<status status="PASS" start="2026-01-01T19:43:32.447712" elapsed="1.899718"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-01T19:43:36.367638" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-01T19:43:34.357116" elapsed="2.010522"/>
+</kw>
+<kw name="Stop Screen Recording" owner="appium_keywords">
+<msg time="2026-01-01T19:43:36.369555" level="INFO">🛑 Stopping recording on DUT: Phone</msg>
+<msg time="2026-01-01T19:43:36.369555" level="INFO">📱 Device ID: 10BF3122K4000JT</msg>
+<msg time="2026-01-01T19:43:37.755900" level="INFO">✅ Screen recording saved: C:\Robot_Framework_dev\Test Automation\videos\swipe_test.mp4</msg>
+<arg>${DUT.Phone}</arg>
+<arg>${EXECDIR}/videos/swipe_test.mp4</arg>
+<doc>Stop Android screen recording and pull the video.</doc>
+<status status="PASS" start="2026-01-01T19:43:36.368555" elapsed="1.387345"/>
+</kw>
+<kw name="Test Video" owner="appium_keywords">
+<msg time="2026-01-01T19:43:37.766832" level="INFO" html="true">
+        &lt;div style="margin:10px 0"&gt;
+            &lt;b&gt;🎬 Screen Recording&lt;/b&gt;&lt;br&gt;
+            &lt;video width="480" controls&gt;
+                &lt;source src="C:\Robot_Framework_dev\Test Automation\videos\swipe_test.mp4" type="video/mp4"&gt;
+                Your browser does not support the video tag.
+            &lt;/video&gt;&lt;br&gt;
+            &lt;a href="C:\Robot_Framework_dev\Test Automation\videos\swipe_test.mp4" target="_blank"&gt;⬇️ Download video&lt;/a&gt;
+        &lt;/div&gt;
+        </msg>
+<arg>${EXECDIR}/videos/swipe_test.mp4</arg>
+<status status="PASS" start="2026-01-01T19:43:37.764459" elapsed="0.003371"/>
+</kw>
+<status status="PASS" start="2026-01-01T19:43:10.807968" elapsed="26.963031"/>
+</test>
+<status status="PASS" start="2026-01-01T19:43:09.483121" elapsed="28.300028"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test03" id="s1" pass="1" fail="0" skip="0">Test03</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
