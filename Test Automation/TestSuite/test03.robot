@@ -14,7 +14,6 @@ ${DUT}    Phone
 
 *** Test Cases ***
 Verify Keywords on DUT using Appium
-    # start_screen_recording    ${DUT.Phone}    Swipe_Test
     verify_text_appium_full    Kids    Phone
     tap_by_coordinates    Playstore.json    search_icon    Phone
     tap_by_text    Action    Phone
@@ -29,5 +28,4 @@ Verify Keywords on DUT using Appium
     Sleep    2s
     swipe_left_right    Phone    right
     Sleep    2s
-    # Stop Screen Recording     ${DUT.Phone}    ${EXECDIR}/videos/swipe_test.mp4
-    # Test_Video    ${EXECDIR}/videos/swipe_test.mp4
+

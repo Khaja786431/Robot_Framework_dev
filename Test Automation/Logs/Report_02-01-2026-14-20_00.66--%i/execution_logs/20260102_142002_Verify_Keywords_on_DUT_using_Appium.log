@@ -1,0 +1,139 @@
+Test Name   : Verify Keywords on DUT using Appium
+DUTs        : Phone
+Status      : RUNNING
+Start Time  : 2026-01-02 14:20:02.299987
+
+--- Execution Timeline ---
+[14:20:02.299] INFO: 🎬 Starting recording | DUT=Phone
+[14:20:02.299] INFO: 🎥 DUT name resolved to: Phone
+[14:20:02.299] INFO: 📱 Device ID resolved to: 10BF3122K4000JT
+[14:20:02.299] INFO: 📁 Device video path: /sdcard/10BF3122K4000JT_20260102_142002_Verify_Keywords_on_DUT_using_Appium.mp4
+[14:20:02.801] INFO: ✅ Screen recording started successfully
+[14:20:02.801] ▶ KEYWORD START: verify_text_appium_full
+[14:20:07.019] INFO: <b>Verifying text:</b> 'Kids'
+[14:20:07.960] INFO: <b>Visible texts on screen:</b><br>In-app purchases<br>C-Drama: The Unclouded Soul - One pure heart in a valley of monsters.<br>Install<br>In-app purchases<br>Sponsored<br>Suggested for you<br>Recommended for you<br>For you<br>Top charts<br>Kids<br>Categories<br>Games<br>Apps<br>Search<br>Books<br>You
+[14:20:07.960] INFO: <b style='color:green'>TEXT VERIFIED: Kids</b>
+[14:20:07.960] ✔ KEYWORD END: verify_text_appium_full (PASS)
+[14:20:07.960] ▶ KEYWORD START: tap_by_coordinates
+[14:20:08.062] INFO: <b>Tapped 'search_icon' at (625,2593) on DUT 'Phone'</b>
+[14:20:08.062] ✔ KEYWORD END: tap_by_coordinates (PASS)
+[14:20:08.079] ▶ KEYWORD START: tap_by_text
+[14:20:10.356] INFO: <b style='color:green'>Tapped on text:</b> Action<br><img src='ocr_highlighted.png' width='40%'>
+[14:20:10.360] ✔ KEYWORD END: tap_by_text (PASS)
+[14:20:10.360] ▶ KEYWORD START: verify_image_element
+[14:20:10.897] INFO: <b>Captured Screen:</b><br><img src='appium_verify_image_1767343810.png' width='300px'>
+[14:20:10.897] INFO: <b>Reference Image:</b><br><img src='C:\Robot_Framework_dev\Test Automation\Resources\images\Books_play.png' width='300px'>
+[14:20:11.163] INFO: <b>Similarity Score:</b> 1.000
+[14:20:11.240] INFO: <b>Matched Area:</b><br><img src='verify_image_highlighted_1767343811.png' width='300px'>
+[14:20:11.240] INFO: <b style='color:green'>Image Verification: PASS</b>
+[14:20:11.240] ✔ KEYWORD END: verify_image_element (PASS)
+[14:20:11.240] ▶ KEYWORD START: click_by_image
+[14:20:11.945] INFO: <b>Image Match Score:</b> 1.000
+[14:20:12.024] INFO: <b>Matched Image (confidence=1.000)</b><br><img src='click_image_highlighted_1767343811.png' width='40%'>
+[14:20:12.118] INFO: Clicked at (125,2593) | match=1.000
+[14:20:12.133] ✔ KEYWORD END: click_by_image (PASS)
+[14:20:12.133] ▶ KEYWORD START: run_command
+[14:20:12.133] INFO: Executing command on Phone: getprop ro.build.version.release
+[14:20:12.255] INFO: OUTPUT:15
+[14:20:12.255] ✔ KEYWORD END: run_command (PASS)
+[14:20:12.255] ▶ KEYWORD START: press_key
+[14:20:12.255] INFO: <b>Pressing Keyevent:</b> BACK on Phone
+[14:20:12.413] ✔ KEYWORD END: press_key (PASS)
+[14:20:12.413] ▶ KEYWORD START: Sleep
+[14:20:14.418] INFO: Slept 2 seconds.
+[14:20:14.418] ✔ KEYWORD END: Sleep (PASS)
+[14:20:14.418] ▶ KEYWORD START: scroll_top_bottom
+[14:20:17.320] INFO: Scrolled DOWN | percent=0.9 | DUT=Phone
+[14:20:17.323] ✔ KEYWORD END: scroll_top_bottom (PASS)
+[14:20:17.328] ▶ KEYWORD START: Sleep
+[14:20:19.335] INFO: Slept 2 seconds.
+[14:20:19.335] ✔ KEYWORD END: Sleep (PASS)
+[14:20:19.335] ▶ KEYWORD START: press_key
+[14:20:19.335] INFO: <b>Pressing Keyevent:</b> HOME on Phone
+[14:20:19.508] ✔ KEYWORD END: press_key (PASS)
+[14:20:19.508] ▶ KEYWORD START: Sleep
+[14:20:21.538] INFO: Slept 2 seconds.
+[14:20:21.539] ✔ KEYWORD END: Sleep (PASS)
+[14:20:21.539] ▶ KEYWORD START: swipe_left_right
+[14:20:23.421] INFO: Swiped RIGHT | percent=0.9 | DUT=Phone
+[14:20:23.421] ✔ KEYWORD END: swipe_left_right (PASS)
+[14:20:23.421] ▶ KEYWORD START: Sleep
+[14:20:25.430] INFO: Slept 2 seconds.
+[14:20:25.430] ✔ KEYWORD END: Sleep (PASS)
+[14:20:25.430] INFO: 🛑 Stopping recording on DUT: Phone
+[14:20:25.430] INFO: 📱 Device ID: 10BF3122K4000JT
+[14:20:26.764] INFO: ✅ Screen recording saved: C:\Robot_Framework_dev\Test Automation\Logs\Report_02-01-2026-14-20_00.66--%i\videos\Phone_20260102_142002_Verify_Keywords_on_DUT_using_Appium.mp4
+
+--- Summary ---
+Status      : PASS
+End Time    : 2026-01-02 14:20:26.769331
+Duration    : 0:00:24.469344
+[14:20:26.771] INFO: <details style='margin:15px 0'><summary><b>🎬 Screen Recordings & Execution Log</b></summary>
+                <div>
+                  <b>Phone</b><br>
+                  <video controls style="max-width:600px; max-height:400px;">
+                    <source src="videos/Phone_20260102_142002_Verify_Keywords_on_DUT_using_Appium.mp4" type="video/mp4">
+                  </video><br>
+                  <a href="videos/Phone_20260102_142002_Verify_Keywords_on_DUT_using_Appium.mp4">⬇️ Download video</a>
+                </div><hr>
+                
+            <b>📄 Execution Log</b><br>
+            <a href="execution_logs/20260102_142002_Verify_Keywords_on_DUT_using_Appium.log">⬇️ Download execution log</a>
+            </details>
+[14:20:26.772] INFO: <div id="execution-summary-container">
+        <style>
+        .row-pass { background:#e6ffed; }
+        .row-fail { background:#ffe6e6; }
+        .row-skip { background:#fff8e6; }
+        tr:hover { background:#eaf2ff; }
+        </style>
+
+        <h2>📊 Execution Summary</h2>
+
+        <table border="1" cellpadding="6" cellspacing="0"
+            style="border-collapse:collapse; width:100%">
+        <thead style="background:#f0f0f0">
+            <tr>
+            <th>Test Name</th>
+            <th>DUT(s)</th>
+            <th>Status</th>
+            <th>Duration</th>
+            <th>Video</th>
+            <th>Log</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr class="row-pass">
+            <td><a href="#test-Verify_Keywords_on_DUT_using_Appium">Verify Keywords on DUT using Appium</a></td>
+            <td>Phone</td>
+            <td>PASS</td>
+            <td>0:00:24</td>
+            <td style="text-align:center">🎬</td>
+            <td style="text-align:center">📄</td>
+            </tr>
+            
+            
+        <tr style="font-weight:bold; background:#f5f5f5">
+        <td colspan="2">TOTAL</td>
+        <td>✅ 1 | ❌ 0 | ⚠️ 0</td>
+        <td colspan="3"></td>
+        </tr>
+        
+        </tbody>
+        </table>
+
+        <div style="margin-top:10px">
+        <b>📦 Export Summary</b><br>
+        <a href="execution_summary.csv" target="_blank">⬇️ Download CSV</a><br>
+        <a href="execution_summary.json" target="_blank">⬇️ Download JSON</a>
+        </div>
+        </div>
+
+        <script>
+        (function() {
+            var s = document.getElementById("execution-summary-container");
+            document.body.insertBefore(s, document.body.firstChild);
+        })();
+        </script>
+        <hr>

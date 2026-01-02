@@ -1,0 +1,12 @@
+[
+  {
+    "test": "Verify Keywords on DUT using Appium",
+    "anchor": "Verify_Keywords_on_DUT_using_Appium",
+    "duts": "Phone",
+    "status": "PASS",
+    "duration": "0:00:24",
+    "row_class": "row-pass",
+    "video": true,
+    "log": true
+  }
+]

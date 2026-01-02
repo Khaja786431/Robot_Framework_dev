@@ -1,0 +1,2 @@
+test,duts,status,duration,video,log
+Verify Keywords on DUT using Appium,Phone,PASS,0:00:24,True,True
