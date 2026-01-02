@@ -1,15 +1,15 @@
 @echo off
-REM Get timestamp in format YYYY-MM-DD_HH-MM-SS
+set PYTHONPATH=%CD%
+
 for /f "tokens=1-5 delims=:/ " %%d in ("%date% %time%") do (
     set timestamp=%%d-%%e-%%f_%%g-%%h-%%i
 )
 
-REM Create Logs folder if it doesn't exist
 if not exist Logs mkdir Logs
 
-REM Run Robot Framework with timestamped output directory
-robot --outputdir Logs\Report_%timestamp% TestSuite/test03.robot
+robot ^
+--listener Configurations.auto_screen_record_listener.AutoScreenRecordingListener ^
+--outputdir Logs\Report_%timestamp% ^
+TestSuite\test03.robot
 
-echo Execution completed!
 pause
-exit

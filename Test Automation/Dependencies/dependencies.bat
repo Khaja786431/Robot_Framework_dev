@@ -14,6 +14,7 @@ pause
 exit
 
 @REM Command to start appium server "appium --allow-insecure=uiautomator2:adb_shell"
+@REM to start recording on multiple DUT's use this in .robot--> ${DUTS}   Phone,Cluster
 
 
 @REM #To switch branch

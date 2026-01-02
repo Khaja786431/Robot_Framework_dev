@@ -1,0 +1,83 @@
+Test Name   : Verify Keywords on DUT using Appium
+DUTs        : Phone
+Status      : RUNNING
+Start Time  : 2026-01-02 13:14:00.897428
+
+--- Execution Timeline ---
+[13:14:00.897] INFO: 🎬 Starting recording | DUT=Phone
+[13:14:00.897] INFO: 🎥 DUT name resolved to: Phone
+[13:14:00.897] INFO: 📱 Device ID resolved to: 10BF3122K4000JT
+[13:14:00.913] INFO: 📁 Device video path: /sdcard/10BF3122K4000JT_20260102_131400_Verify_Keywords_on_DUT_using_Appium.mp4
+[13:14:01.444] INFO: ✅ Screen recording started successfully
+[13:14:01.444] ▶ KEYWORD START: verify_text_appium_full
+[13:14:04.664] INFO: <b>Verifying text:</b> 'Kids'
+[13:14:05.591] INFO: <b>Visible texts on screen:</b><br>In-app purchases<br>C-Drama: The Unclouded Soul - One pure heart in a valley of monsters.<br>Install<br>In-app purchases<br>Sponsored<br>Suggested for you<br>Recommended for you<br>For you<br>Top charts<br>Kids<br>Categories<br>Games<br>Apps<br>Search<br>Books<br>You
+[13:14:05.592] INFO: <b style='color:green'>TEXT VERIFIED: Kids</b>
+[13:14:05.595] ✔ KEYWORD END: verify_text_appium_full (PASS)
+[13:14:05.597] ▶ KEYWORD START: tap_by_coordinates
+[13:14:05.708] INFO: <b>Tapped 'search_icon' at (625,2593) on DUT 'Phone'</b>
+[13:14:05.708] ✔ KEYWORD END: tap_by_coordinates (PASS)
+[13:14:05.708] ▶ KEYWORD START: tap_by_text
+[13:14:08.606] INFO: <b style='color:green'>Tapped on text:</b> Action<br><img src='ocr_highlighted.png' width='40%'>
+[13:14:08.606] ✔ KEYWORD END: tap_by_text (PASS)
+[13:14:08.606] ▶ KEYWORD START: verify_image_element
+[13:14:09.209] INFO: <b>Captured Screen:</b><br><img src='appium_verify_image_1767339848.png' width='300px'>
+[13:14:09.209] INFO: <b>Reference Image:</b><br><img src='C:\Robot_Framework_dev\Test Automation\Resources\images\Books_play.png' width='300px'>
+[13:14:09.526] INFO: <b>Similarity Score:</b> 1.000
+[13:14:09.600] INFO: <b>Matched Area:</b><br><img src='verify_image_highlighted_1767339849.png' width='300px'>
+[13:14:09.600] INFO: <b style='color:green'>Image Verification: PASS</b>
+[13:14:09.616] ✔ KEYWORD END: verify_image_element (PASS)
+[13:14:09.616] ▶ KEYWORD START: click_by_image
+[13:14:10.476] INFO: <b>Image Match Score:</b> 1.000
+[13:14:10.653] INFO: <b>Matched Image (confidence=1.000)</b><br><img src='click_image_highlighted_1767339850.png' width='40%'>
+[13:14:10.809] INFO: Clicked at (125,2593) | match=1.000
+[13:14:10.818] ✔ KEYWORD END: click_by_image (PASS)
+[13:14:10.825] ▶ KEYWORD START: run_command
+[13:14:10.826] INFO: Executing command on Phone: getprop ro.build.version.release
+[13:14:10.977] INFO: OUTPUT:15
+[13:14:10.977] ✔ KEYWORD END: run_command (PASS)
+[13:14:10.977] ▶ KEYWORD START: press_key
+[13:14:10.992] INFO: <b>Pressing Keyevent:</b> BACK on Phone
+[13:14:11.197] ✔ KEYWORD END: press_key (PASS)
+[13:14:11.199] ▶ KEYWORD START: Sleep
+[13:14:13.209] INFO: Slept 2 seconds.
+[13:14:13.209] ✔ KEYWORD END: Sleep (PASS)
+[13:14:13.209] ▶ KEYWORD START: scroll_top_bottom
+[13:14:16.249] INFO: Scrolled DOWN | percent=0.9 | DUT=Phone
+[13:14:16.249] ✔ KEYWORD END: scroll_top_bottom (PASS)
+[13:14:16.281] ▶ KEYWORD START: Sleep
+[13:14:18.318] INFO: Slept 2 seconds.
+[13:14:18.321] ✔ KEYWORD END: Sleep (PASS)
+[13:14:18.330] ▶ KEYWORD START: press_key
+[13:14:18.332] INFO: <b>Pressing Keyevent:</b> HOME on Phone
+[13:14:18.551] ✔ KEYWORD END: press_key (PASS)
+[13:14:18.553] ▶ KEYWORD START: Sleep
+[13:14:20.567] INFO: Slept 2 seconds.
+[13:14:20.568] ✔ KEYWORD END: Sleep (PASS)
+[13:14:20.570] ▶ KEYWORD START: swipe_left_right
+[13:14:22.455] INFO: Swiped RIGHT | percent=0.9 | DUT=Phone
+[13:14:22.456] ✔ KEYWORD END: swipe_left_right (PASS)
+[13:14:22.458] ▶ KEYWORD START: Sleep
+[13:14:24.468] INFO: Slept 2 seconds.
+[13:14:24.473] ✔ KEYWORD END: Sleep (PASS)
+[13:14:24.476] INFO: 🛑 Stopping recording on DUT: Phone
+[13:14:24.476] INFO: 📱 Device ID: 10BF3122K4000JT
+[13:14:25.795] INFO: ✅ Screen recording saved: C:\Robot_Framework_dev\Test Automation\Logs\Report_02-01-2026-13-13_59.09--%i\videos\Phone_20260102_131400_Verify_Keywords_on_DUT_using_Appium.mp4
+
+--- Summary ---
+Status      : PASS
+End Time    : 2026-01-02 13:14:25.795444
+Duration    : 0:00:24.898016
+[13:14:25.795] INFO: <details style='margin:15px 0'><summary><b>🎬 Screen Recordings & Execution Log</b></summary>
+                <div style="margin-top:10px">
+                    <b>Phone</b><br>
+                    <video controls style="max-width:600px; max-height:400px;">
+                        <source src="videos/Phone_20260102_131400_Verify_Keywords_on_DUT_using_Appium.mp4" type="video/mp4">
+                    </video><br>
+                    <a href="videos/Phone_20260102_131400_Verify_Keywords_on_DUT_using_Appium.mp4" target="_blank">⬇️ Download video</a>
+                </div>
+                <hr>
+                
+            <b>📄 Execution Log</b><br>
+            <a href="execution_logs/20260102_131400_Verify_Keywords_on_DUT_using_Appium.log" target="_blank">⬇️ Download execution log</a>
+            </details>

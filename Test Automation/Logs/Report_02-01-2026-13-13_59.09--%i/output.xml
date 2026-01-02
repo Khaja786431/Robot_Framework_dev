@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.10 on win32)" generated="2026-01-02T13:13:59.801258" rpa="false" schemaversion="5">
+<suite id="s1" name="Test03" source="C:\Robot_Framework_dev\Test Automation\TestSuite\test03.robot">
+<test id="s1-t1" name="Verify Keywords on DUT using Appium" line="16">
+<msg time="2026-01-02T13:14:00.897428" level="INFO">🎬 Starting recording | DUT=Phone</msg>
+<msg time="2026-01-02T13:14:00.897428" level="INFO">🎥 DUT name resolved to: Phone</msg>
+<msg time="2026-01-02T13:14:00.897428" level="INFO">📱 Device ID resolved to: 10BF3122K4000JT</msg>
+<msg time="2026-01-02T13:14:00.913050" level="INFO">📁 Device video path: /sdcard/10BF3122K4000JT_20260102_131400_Verify_Keywords_on_DUT_using_Appium.mp4</msg>
+<msg time="2026-01-02T13:14:01.444624" level="INFO">✅ Screen recording started successfully</msg>
+<kw name="Verify Text Appium Full" owner="appium_keywords">
+<msg time="2026-01-02T13:14:04.664576" level="INFO" html="true">&lt;b&gt;Verifying text:&lt;/b&gt; 'Kids'</msg>
+<msg time="2026-01-02T13:14:05.591836" level="INFO" html="true">&lt;b&gt;Visible texts on screen:&lt;/b&gt;&lt;br&gt;In-app purchases&lt;br&gt;C-Drama: The Unclouded Soul - One pure heart in a valley of monsters.&lt;br&gt;Install&lt;br&gt;In-app purchases&lt;br&gt;Sponsored&lt;br&gt;Suggested for you&lt;br&gt;Recommended for you&lt;br&gt;For you&lt;br&gt;Top charts&lt;br&gt;Kids&lt;br&gt;Categories&lt;br&gt;Games&lt;br&gt;Apps&lt;br&gt;Search&lt;br&gt;Books&lt;br&gt;You</msg>
+<msg time="2026-01-02T13:14:05.591836" level="INFO" html="true">&lt;b style='color:green'&gt;TEXT VERIFIED: Kids&lt;/b&gt;</msg>
+<arg>Kids</arg>
+<arg>Phone</arg>
+<doc>Verifies FULL visible text using Appium (exact match).
+Fails if only partial text is found.</doc>
+<status status="PASS" start="2026-01-02T13:14:01.444624" elapsed="4.151230"/>
+</kw>
+<kw name="Tap By Coordinates" owner="appium_keywords">
+<msg time="2026-01-02T13:14:05.692856" level="INFO" html="true">&lt;b&gt;Tapped 'search_icon' at (625,2593) on DUT 'Phone'&lt;/b&gt;</msg>
+<arg>Playstore.json</arg>
+<arg>search_icon</arg>
+<arg>Phone</arg>
+<doc>Tap on screen using X,Y coordinates from JSON key using Appium (mobile: tap).</doc>
+<status status="PASS" start="2026-01-02T13:14:05.596818" elapsed="0.111660"/>
+</kw>
+<kw name="Tap By Text" owner="appium_keywords">
+<msg time="2026-01-02T13:14:08.606305" level="INFO" html="true">&lt;b style='color:green'&gt;Tapped on text:&lt;/b&gt; Action&lt;br&gt;&lt;img src='ocr_highlighted.png' width='40%'&gt;</msg>
+<arg>Action</arg>
+<arg>Phone</arg>
+<doc>Tap on visible text using OCR and Appium clickGesture.
+Works without XML / UI dump.</doc>
+<status status="PASS" start="2026-01-02T13:14:05.708478" elapsed="2.897827"/>
+</kw>
+<kw name="Verify Image Element" owner="appium_keywords">
+<msg time="2026-01-02T13:14:09.209372" level="INFO" html="true">&lt;b&gt;Captured Screen:&lt;/b&gt;&lt;br&gt;&lt;img src='appium_verify_image_1767339848.png' width='300px'&gt;</msg>
+<msg time="2026-01-02T13:14:09.209372" level="INFO" html="true">&lt;b&gt;Reference Image:&lt;/b&gt;&lt;br&gt;&lt;img src='C:\Robot_Framework_dev\Test Automation\Resources\images\Books_play.png' width='300px'&gt;</msg>
+<msg time="2026-01-02T13:14:09.526263" level="INFO" html="true">&lt;b&gt;Similarity Score:&lt;/b&gt; 1.000</msg>
+<msg time="2026-01-02T13:14:09.600480" level="INFO" html="true">&lt;b&gt;Matched Area:&lt;/b&gt;&lt;br&gt;&lt;img src='verify_image_highlighted_1767339849.png' width='300px'&gt;</msg>
+<msg time="2026-01-02T13:14:09.600480" level="INFO" html="true">&lt;b style='color:green'&gt;Image Verification: PASS&lt;/b&gt;</msg>
+<arg>Books_play.png</arg>
+<arg>Phone</arg>
+<doc>Verifies image on screen using Appium screenshot + OpenCV template matching.
+Logs highlighted match image in Robot report.</doc>
+<status status="PASS" start="2026-01-02T13:14:08.606305" elapsed="1.009832"/>
+</kw>
+<kw name="Click By Image" owner="appium_keywords">
+<msg time="2026-01-02T13:14:10.476342" level="INFO" html="true">&lt;b&gt;Image Match Score:&lt;/b&gt; 1.000</msg>
+<msg time="2026-01-02T13:14:10.653891" level="INFO" html="true">&lt;b&gt;Matched Image (confidence=1.000)&lt;/b&gt;&lt;br&gt;&lt;img src='click_image_highlighted_1767339850.png' width='40%'&gt;</msg>
+<msg time="2026-01-02T13:14:10.808466" level="INFO">Clicked at (125,2593) | match=1.000</msg>
+<arg>Games_play.png</arg>
+<arg>Phone</arg>
+<doc>Takes screenshot using Appium,
+performs template match, clicks on matched area,
+and logs highlighted image in Robot report.</doc>
+<status status="PASS" start="2026-01-02T13:14:09.616137" elapsed="1.201957"/>
+</kw>
+<kw name="Run Command" owner="appium_keywords">
+<msg time="2026-01-02T13:14:10.826072" level="INFO">Executing command on Phone: getprop ro.build.version.release</msg>
+<msg time="2026-01-02T13:14:10.977161" level="INFO">OUTPUT:15
+</msg>
+<arg>getprop ro.build.version.release</arg>
+<arg>Phone</arg>
+<doc>Executes shell command on a DUT using Appium mobile:shell
+Works across Appium versions (dict or string return)</doc>
+<status status="PASS" start="2026-01-02T13:14:10.824078" elapsed="0.153083"/>
+</kw>
+<kw name="Press Key" owner="appium_keywords">
+<msg time="2026-01-02T13:14:10.992780" level="INFO" html="true">&lt;b&gt;Pressing Keyevent:&lt;/b&gt; BACK on Phone</msg>
+<arg>BACK</arg>
+<arg>Phone</arg>
+<doc>Press Android hardware/system key using keyevent.
+Ex: HOME, BACK, POWER, VOLUME_UP, VOLUME_DOWN, ENTER..</doc>
+<status status="PASS" start="2026-01-02T13:14:10.977161" elapsed="0.220219"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-02T13:14:13.209414" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-02T13:14:11.199376" elapsed="2.010038"/>
+</kw>
+<kw name="Scroll Top Bottom" owner="appium_keywords">
+<msg time="2026-01-02T13:14:16.249603" level="INFO">Scrolled DOWN | percent=0.9 | DUT=Phone</msg>
+<arg>Phone</arg>
+<arg>down</arg>
+<doc>Safe scroll that avoids Android system gestures.</doc>
+<status status="PASS" start="2026-01-02T13:14:13.209414" elapsed="3.040189"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-02T13:14:18.318917" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-02T13:14:16.279116" elapsed="2.041795"/>
+</kw>
+<kw name="Press Key" owner="appium_keywords">
+<msg time="2026-01-02T13:14:18.332879" level="INFO" html="true">&lt;b&gt;Pressing Keyevent:&lt;/b&gt; HOME on Phone</msg>
+<arg>HOME</arg>
+<arg>Phone</arg>
+<doc>Press Android hardware/system key using keyevent.
+Ex: HOME, BACK, POWER, VOLUME_UP, VOLUME_DOWN, ENTER..</doc>
+<status status="PASS" start="2026-01-02T13:14:18.329887" elapsed="0.220808"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-02T13:14:20.567035" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-02T13:14:18.553686" elapsed="2.014316"/>
+</kw>
+<kw name="Swipe Left Right" owner="appium_keywords">
+<msg time="2026-01-02T13:14:22.455367" level="INFO">Swiped RIGHT | percent=0.9 | DUT=Phone</msg>
+<arg>Phone</arg>
+<arg>right</arg>
+<doc>Safe horizontal swipe avoiding Android back gestures.</doc>
+<status status="PASS" start="2026-01-02T13:14:20.570991" elapsed="1.885371"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-02T13:14:24.468523" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-02T13:14:22.458357" elapsed="2.013784"/>
+</kw>
+<msg time="2026-01-02T13:14:24.475141" level="INFO">🛑 Stopping recording on DUT: Phone</msg>
+<msg time="2026-01-02T13:14:24.476217" level="INFO">📱 Device ID: 10BF3122K4000JT</msg>
+<msg time="2026-01-02T13:14:25.795444" level="INFO">✅ Screen recording saved: C:\Robot_Framework_dev\Test Automation\Logs\Report_02-01-2026-13-13_59.09--%i\videos\Phone_20260102_131400_Verify_Keywords_on_DUT_using_Appium.mp4</msg>
+<msg time="2026-01-02T13:14:25.795444" level="INFO" html="true">&lt;details style='margin:15px 0'&gt;&lt;summary&gt;&lt;b&gt;🎬 Screen Recordings &amp; Execution Log&lt;/b&gt;&lt;/summary&gt;
+                &lt;div style="margin-top:10px"&gt;
+                    &lt;b&gt;Phone&lt;/b&gt;&lt;br&gt;
+                    &lt;video controls style="max-width:600px; max-height:400px;"&gt;
+                        &lt;source src="videos/Phone_20260102_131400_Verify_Keywords_on_DUT_using_Appium.mp4" type="video/mp4"&gt;
+                    &lt;/video&gt;&lt;br&gt;
+                    &lt;a href="videos/Phone_20260102_131400_Verify_Keywords_on_DUT_using_Appium.mp4" target="_blank"&gt;⬇️ Download video&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;hr&gt;
+                
+            &lt;b&gt;📄 Execution Log&lt;/b&gt;&lt;br&gt;
+            &lt;a href="execution_logs/20260102_131400_Verify_Keywords_on_DUT_using_Appium.log" target="_blank"&gt;⬇️ Download execution log&lt;/a&gt;
+            &lt;/details&gt;</msg>
+<status status="PASS" start="2026-01-02T13:14:00.881807" elapsed="23.593334"/>
+</test>
+<status status="PASS" start="2026-01-02T13:14:00.829720" elapsed="24.977769"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test03" id="s1" pass="1" fail="0" skip="0">Test03</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
