@@ -12,6 +12,10 @@ import re
 import subprocess
 import time
 from datetime import datetime
+import sounddevice as sd
+import scipy.io.wavfile as wav
+import numpy as np
+import threading
 
 
 
@@ -36,6 +40,16 @@ class adb_keywords:
         self.config.read(ini_path)
         #Set tesseract path
         pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+        #Audio Verification
+        self.sessions = {}
+        self.fs = 44100
+
+        # 🔧 ADB device_id → USB audio input mapping
+        self.device_audio_map = {
+            "adb-10BF3122K4000JT": 2,
+            "adb-CLUSTER-998877": 4
+        }
 
     
     @keyword
@@ -110,6 +124,54 @@ class adb_keywords:
             return msg
 
         raise AssertionError(f"Failed to establish ADB connection for device '{device_id}'")
+
+    def _record(self, dut_id, audio_device):
+        self.sessions[dut_id]["data"] = sd.rec(
+            int(60 * self.fs),
+            samplerate=self.fs,
+            channels=1,
+            device=audio_device,
+            dtype="int16"
+        )
+        sd.wait()
+
+    @keyword
+    def verify_audio_start(self, device_id):
+        if device_id not in self.device_audio_map:
+            raise Exception(f"No audio device mapped for device_id {device_id}")
+
+        audio_device = self.device_audio_map[device_id]
+        self.sessions[device_id] = {}
+
+        thread = threading.Thread(
+            target=self._record,
+            args=(device_id, audio_device)
+        )
+        self.sessions[device_id]["thread"] = thread
+        thread.start()
+
+    @keyword
+    def verify_audio_stop(self, device_id, reference_audio, threshold):
+        sd.stop()
+
+        captured_file = f"captured_{device_id}.wav"
+        wav.write(
+            captured_file,
+            self.fs,
+            self.sessions[device_id]["data"]
+        )
+
+        return self._compare_audio(reference_audio, captured_file, threshold)
+
+    def _compare_audio(self, ref_file, cap_file, threshold):
+        _, ref = wav.read(ref_file)
+        _, cap = wav.read(cap_file)
+
+        ref_amp = np.max(np.abs(ref))
+        cap_amp = np.max(np.abs(cap))
+
+        diff = abs(ref_amp - cap_amp)
+        return diff <= threshold
 
 
     @keyword
